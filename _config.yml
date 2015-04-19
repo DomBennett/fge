@@ -32,6 +32,9 @@ icon: favicon.ico
 
 # Menu settings
 menu:
+  - title:        Home
+    url:          /
+
   - title:        About
     url:          /about
 

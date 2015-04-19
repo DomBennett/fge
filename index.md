@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 title: Home
 ---
 
@@ -7,8 +7,8 @@ title: Home
 
 Hello and welcome to _Computational Guides for Ecologists_!
 
-The idea of this website is to provide a platform of open-source documents
-that provide useful tutorials on all things computational for ecologists.
+The idea of this website is to provide a platform of open-source documents,
+useful tutorials on all things computational for ecologists.
 
 Anyone can download the documents edit them or add their own. Changes are then
 uploaded to this website for others to see, use and make their own changes --
