@@ -7,7 +7,7 @@ description: >
   Cover photo credit DR04 (C).
 
 # URLS
-baseurl: "/test-cge"
+baseurl: "/cge"
 docurl: "https://github.com/BES-QSIG/docs/blob/master/"
 imgurl: "https://raw.githubusercontent.com/BES-QSIG/docs/master/img"
 url: "http://bes-qsig.github.io"
