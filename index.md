@@ -23,5 +23,4 @@ anything computational you can! Read this guide to get started
 
 {% for doc in site.docs %}
 * [{{ doc.title }}]({{ site.baseurl }}{{ doc.url }})
-    * _Status_: {{ doc.status }}
-    * _Author(s)_: {{ doc.author | join: ', ' }}{% endfor %}
+    * _Author(s)_: {{ doc.authors | join: ', ' }}{% endfor %}
