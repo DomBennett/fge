@@ -24,7 +24,9 @@ layout: doc
 authors: {0}
 lastchange: {1}
 title: {2}
-permalink: /docs/{3}/
+status: {3}
+theme: {4}
+permalink: {5}
 ---
 """
 
@@ -52,7 +54,7 @@ def get_contributions(doc_path, input_dir):
         # search penultimate line for changes to file
         changes_start = re.search(doc_path + '\s\|\s', lines[-2]).end()
         changes_end = re.search(doc_path + '\s\|\s[0-9]+\s', lines[-2]).end()
-        changes = int(lines[-2][changes_start:changes_end].strip())
+        changes = float(lines[-2][changes_start:changes_end].strip())
         if name in name_changes.keys():
             name_changes[name] += changes
         else:
@@ -60,7 +62,7 @@ def get_contributions(doc_path, input_dir):
     # convert into rough %
     total = sum(name_changes.values())
     for name in name_changes.keys():
-        name_changes[name] = name_changes[name]*100/total
+        name_changes[name] = round(name_changes[name]*100/total, 1)
     # sort by who made most contributions
     sorted_by_changes = sorted(name_changes.items(),
                                key=operator.itemgetter(1))
@@ -90,7 +92,7 @@ def get_last_change(doc_path, input_dir):
 
 
 def read_doc(doc_path, input_dir):
-    """Return string of doc text without any front-matter"""
+    """Return strings of front matter and doc text"""
     pattern = re.compile('\-\-\-')
     with open(os.path.join(input_dir, doc_path), 'rb') as f:
         text = f.read()
@@ -99,29 +101,36 @@ def read_doc(doc_path, input_dir):
         # there should be two ---, else this will raise an error
         text = text[res.end():]
         res = pattern.search(text)
+        text_fm = text[:res.end()]
         text = text[res.end():]
-    return(text[1:])
+        doc_fm = {}
+        for e in text_fm.split('\n'):
+            if ':' in e:
+                key, value = e.split(':')
+                doc_fm[key] = value.strip()
+        return(doc_fm, text[1:])
 
 
 def run(input_dir, output_dir):
     """Make docs in _docs_repo/ CGE friendly"""
     # get docs
     docs = [e for e in os.listdir(input_dir) if re.search('\.md', e)]
-    docs = [e for e in docs if docs != 'README.md']
+    docs = [e for e in docs if e != 'README.md']
     for doc in docs:
+        # read doc
+        doc_fm, doc_text = read_doc(doc, input_dir)
         # get metadata
         authors = get_contributions(doc, input_dir)
         last_change = get_last_change(doc, input_dir)
-        title = doc.replace('_', ' ')
-        title = title.replace('.md', '')
-        title = title.title()
+        title = doc_fm['title']
+        status = doc_fm['status']
+        theme = doc_fm['theme']
+        permalink = doc_fm['permalink']
         # construct front-matter
-        doc_fm = front_matter.format(authors, last_change, title,
-                                     doc.replace('.md', ''))
-        # read doc
-        doc_text = read_doc(doc, input_dir)
+        new_fm = front_matter.format(authors, last_change, title, status,
+                                     theme, permalink)
         # combine
-        new_doc = doc_fm + doc_text
+        new_doc = new_fm + doc_text
         # write out
         with open(os.path.join(output_dir, doc), 'wb') as f:
             f.write(new_doc)

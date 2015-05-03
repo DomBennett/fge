@@ -1,0 +1,26 @@
+<div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    <div class="doc-box">
+      <p>
+        <b>Status:</b><br>
+        {{ page.status }}<br>
+        <b>Authors:</b><br>
+        {{ page.authors | join: ', ' }}<br>
+        <b>Last edit:</b><br>
+        {{ page.lastchange }}
+      </p>
+    </div>
+    <br>
+    {% comment %}
+      Loop through to find all docs in same theme, add to sidebar.
+    {% endcomment %}
+    <h3>Related guides</h3>
+    <ul>
+      {% for doc in site.docs %}
+        {% if doc.theme == page.theme %}
+          <li><a href="{{ site.url | append: site.baseurl | append: doc.permalink }}">{{ doc.title }}</a><br></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </aside>
+</div>

@@ -161,6 +161,52 @@
     }
 }
 
+/**
+ * Docs content
+ */
+ .doc-content {
+     padding: $spacing-unit 0;
+ }
+
+ .doc-heading {
+     font-size: 20px;
+ }
+
+ .doc-box {
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    background-color: $brand-color;
+    color: $front-color;
+    border-radius: 10px;
+ }
+
+ .doc-header {
+     margin-bottom: $spacing-unit;
+ }
+
+ .doc-title {
+     font-size: 42px;
+     letter-spacing: -1px;
+     line-height: 1;
+
+     @include media-query($on-laptop) {
+         font-size: 36px;
+     }
+ }
+
+
+ /**
+  * Edit Message
+  */
+.improve {
+  padding-top: 25px;
+  font-size: 16px;
+  a {
+    color: #999;
+  }
+}
 
 /**
  * Page content
