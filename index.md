@@ -18,9 +18,3 @@ At the moment this is just the test website, hence 'test' in the URL and the
 hit-and-miss design. But if you want to contribute a tutorial document on
 anything computational you can! Read this guide to get started
 [how to contribute]({{ site.baseurl }}/docs/how_to_contribute).
-
-## Current list of tutorials in development
-
-{% for doc in site.docs %}
-* [{{ doc.title }}]({{ site.baseurl }}{{ doc.url }})
-    * _Author(s)_: {{ doc.authors | join: ', ' }}{% endfor %}

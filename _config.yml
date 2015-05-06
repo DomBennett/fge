@@ -32,14 +32,11 @@ icon: favicon.ico
 
 # Menu settings
 menu:
-  - title:        Home
+  - title:        About
     url:          /
 
-  - title:        About
-    url:          /about
-
-  - title:        News
-    url:          /news
+  - title:        Guide Index
+    url:          /guides
 
 # 'Collections' settings
 exclude: ['_docs/README.md', '_docs/LICENSE']
