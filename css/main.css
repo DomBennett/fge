@@ -271,13 +271,22 @@ pre {
   padding: 5px;
   border-style: solid;
   border-width: 1px;
-  font-size: 14px;
-  background-color: #30AC59;
-  color: #EEEEEE;
-  border-radius: 10px; }
+  font-size: 16px;
+  background-color: #144825;
+  border-color: #30AC59;
+  color: #e4f7ea;
+  border-radius: 15px; }
+
+.doc-bar {
+  color: #30AC59;
+  width: 90%;
+  size: 8;
+  align: center;
+  margin-bottom: 10px;
+  margin-top: 10px; }
 
 .doc-header {
-  margin-bottom: 30px; }
+  margin-bottom: 3px; }
 
 .doc-title {
   font-size: 42px;
@@ -290,10 +299,9 @@ pre {
 /**
  * Edit Message
  */
-.improve {
-  padding-top: 25px;
+.edit-message {
   font-size: 16px; }
-  .improve a {
+  .edit-message a {
     color: #999; }
 
 /**
