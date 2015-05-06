@@ -12,7 +12,7 @@
     <ul>
       {% for doc in site.docs %}
         {% if doc.theme == page.theme %}
-          <a href="{{ site.url | append: site.baseurl | append: doc.permalink }}">{{ doc.title }}</a>
+          <li><a href="{{ site.url | append: site.baseurl | append: doc.permalink }}">{{ doc.title }}</a></li>
         {% endif %}
       {% endfor %}
     </ul>
