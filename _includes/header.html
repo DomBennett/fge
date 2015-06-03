@@ -1,13 +1,9 @@
 <header>
     <div class="site-header" data-stellar-background-ratio="0.1"
          style="background-image: url({{ site.cover | prepend: site.baseurl }})">
-
-         <div class='site-title' data-stellar-ratio='0.25'>
-             <h1>
-                 Field Guides for Ecologists
-             </h1>
-             Crowd-sourced notes on all things computational and quantitative in ecological research
-         </div>
+        <div class='site-title'>
+            {% include title.html %}
+        </div>
     </div>
 </header>
 

@@ -13,12 +13,12 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
-$front-color:      #EEEEEE;  // This is the color to contrast with background img
 $text-color:       #111;
 $background-color: #fdfdfd;
 $brand-color:      #30AC59;
 $brand-color-light: lighten($brand-color, 50%);
 $brand-color-dark: darken($brand-color, 25%);
+$front-color:      lighten($brand-color, 75%);  // This is the color to contrast with background img
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);

@@ -6,11 +6,8 @@ layout: default
     <div class="grid">
 
       <div class="unit four-fifths">
-        <header class="doc-header">
-            <h1 class="doc-title">{{ page.title }}</h1>
-        </header>
-        <div class="edit-message hide-on-mobiles">
-          <a href="{{ page.url | split: '/' | last | prepend: site.docurl }}.md"><i class="fa fa-pencil"></i> &nbsp;Improve this page</a>
+        <div class="edit-message">
+            <a href="{{ page.url | split: '/' | last | prepend: site.docurl }}.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
         </div>
         <div class="doc-content">
           {{ content }}

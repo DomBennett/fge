@@ -13,6 +13,7 @@
     text-align: center;
     letter-spacing: -1px;
     margin-top: 200px;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .title-bar {
@@ -26,7 +27,8 @@
     position: fixed;
     background-color: $grey-color-dark;
     text-align: center;
-    bottom: 0;
+    padding-top: 10px;
+    top: 0;
     left: 0;
     z-index: 9999;
     width: 100%;
@@ -113,29 +115,6 @@
     margin-left: 0;
 }
 
-.footer-col-wrapper {
-    font-size: 15px;
-    color: $front-color;
-    margin-left: -$spacing-unit / 2;
-    @extend %clearfix;
-}
-
-.footer-col {
-    float: left;
-    margin-bottom: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
-}
-
-.footer-col-1 {
-    width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-    width:         calc(45% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-2 {
-    width: -webkit-calc(55% - (#{$spacing-unit} / 2));
-    width:         calc(55% - (#{$spacing-unit} / 2));
-}
-
 @include media-query($on-laptop) {
     .footer-col-1,
     .footer-col-2 {
@@ -152,33 +131,12 @@
     }
 }
 
-/**
- * Header-footer links
- */
-
-.hf-link {
-    color: $front-color;
-    text-decoration: none;
-
-    &:visited {
-        color: darken($front-color, 15%);
-    }
-
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
-    }
-}
 
 /**
  * Docs content
  */
  .doc-content {
      padding: $spacing-unit 0;
- }
-
- .doc-heading {
-     font-size: 20px;
  }
 
  .doc-box {

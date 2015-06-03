@@ -1,5 +1,6 @@
 # Site details
 title: Field Guides for Ecologists
+subtitle: Crowd-sourced notes on all things computational and quantitative in ecological research
 acronym: FGE
 email: computational@britishecologicalsociety.org
 description: >
@@ -32,10 +33,10 @@ icon: favicon.ico
 
 # Menu settings
 menu:
-  - title:        About
+  - title:        Home;
     url:          /
 
-  - title:        Guide Index
+  - title:        Index
     url:          /guides
 
 # 'Collections' settings
