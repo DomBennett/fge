@@ -1,0 +1,18 @@
+{% if page.title == "Home" %}
+    <h1>
+        {{ site.title }}
+    </h1>
+    {{ site.subtitle }}
+{% elsif page.title == "Index" %}
+    <h1>
+        Index
+    </h1>
+    All notes ordered by theme
+{% else %}
+    <h1>
+        {{ page.title }}
+    </h1>
+    <b>Status</b>: {{ page.status }}<br>
+    <b>Last edit</b>: {{ page.lastchange }}<br>
+    <b>Author(s)</b>: {{ page.authors | join: ', ' }}<br>
+{% endif %}
