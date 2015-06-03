@@ -6,8 +6,7 @@ body, h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
   margin: 0;
-  padding: 0;
-  z-index: 10; }
+  padding: 0; }
 
 /**
  * Basic styling
@@ -128,7 +127,7 @@ pre {
 /**
  * Clearfix
  */
-.wrapper:after, .footer-col-wrapper:after {
+.wrapper:after {
   content: "";
   display: table;
   clear: both; }
@@ -142,7 +141,7 @@ pre {
   height: 16px;
   vertical-align: middle; }
   .icon > svg path {
-    fill: #EEEEEE; }
+    fill: #30AC59; }
 
 /**
  * Site header
@@ -154,13 +153,14 @@ pre {
   height: 450px; }
 
 .site-title {
-  color: #EEEEEE;
+  color: white;
   text-align: center;
   letter-spacing: -1px;
-  margin-top: 200px; }
+  margin-top: 200px;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); }
 
 .title-bar {
-  color: #EEEEEE;
+  color: white;
   width: 50%;
   size: 8;
   align: center; }
@@ -169,7 +169,8 @@ pre {
   position: fixed;
   background-color: #424242;
   text-align: center;
-  bottom: 0;
+  padding-top: 10px;
+  top: 0;
   left: 0;
   z-index: 9999;
   width: 100%;
@@ -178,7 +179,7 @@ pre {
 .site-nav .menu-icon {
   display: none; }
 .site-nav .page-link {
-  color: #EEEEEE;
+  color: white;
   line-height: 1.5; }
   .site-nav .page-link:not(:first-child) {
     margin-left: 20px; }
@@ -230,24 +231,6 @@ pre {
   list-style: none;
   margin-left: 0; }
 
-.footer-col-wrapper {
-  font-size: 15px;
-  color: #EEEEEE;
-  margin-left: -15px; }
-
-.footer-col {
-  float: left;
-  margin-bottom: 15px;
-  padding-left: 15px; }
-
-.footer-col-1 {
-  width: -webkit-calc(45% - (30px / 2));
-  width: calc(45% - (30px / 2)); }
-
-.footer-col-2 {
-  width: -webkit-calc(55% - (30px / 2));
-  width: calc(55% - (30px / 2)); }
-
 @media screen and (max-width: 800px) {
   .footer-col-1,
   .footer-col-2 {
@@ -259,25 +242,10 @@ pre {
     width: -webkit-calc(100% - (30px / 2));
     width: calc(100% - (30px / 2)); } }
 /**
- * Header-footer links
- */
-.hf-link {
-  color: #EEEEEE;
-  text-decoration: none; }
-  .hf-link:visited {
-    color: #c8c8c8; }
-  .hf-link:hover {
-    color: #111;
-    text-decoration: underline; }
-
-/**
  * Docs content
  */
 .doc-content {
   padding: 30px 0; }
-
-.doc-heading {
-  font-size: 20px; }
 
 .doc-box {
   padding: 5px;
