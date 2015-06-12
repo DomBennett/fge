@@ -55,7 +55,6 @@
         position: absolute;
         top: 9px;
         right: 30px;
-        color: $text-color;
         background-color: $background-color;
         border: 1px solid $grey-color-light;
         border-radius: 5px;
@@ -91,6 +90,7 @@
         }
 
         .page-link {
+            color: $text-color;
             display: block;
             padding: 5px 10px;
         }
