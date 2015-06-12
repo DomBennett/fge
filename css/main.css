@@ -188,7 +188,6 @@ pre {
     position: absolute;
     top: 9px;
     right: 30px;
-    color: #111;
     background-color: #fdfdfd;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
@@ -213,6 +212,7 @@ pre {
       display: block;
       padding-bottom: 5px; }
     .site-nav .page-link {
+      color: #111;
       display: block;
       padding: 5px 10px; } }
 
