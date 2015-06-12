@@ -4,7 +4,7 @@ subtitle: Crowd-sourced notes on all things computational and quantitative in ec
 acronym: FGE
 
 # URLS
-baseurl: "/cge"
+baseurl: "/fge"
 docurl: "https://github.com/BES-QSIG/docs/blob/master/"
 imgurl: "https://raw.githubusercontent.com/BES-QSIG/docs/master/img"
 url: "http://bes-qsig.github.io"
