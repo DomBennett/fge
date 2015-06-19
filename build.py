@@ -2,10 +2,10 @@
 # D.J. Bennett
 # 19/04/2015
 """
-Build docs for the CGE website from the /BES-QSIG/docs repository.
+Build docs for the FGE website from the /BES-QSIG/docs repository.
 
 Usage:
-python build_cge.py
+python build.py
 jekyll build
 
 Then, upload _site/ to gh-pages branch.
@@ -136,8 +136,8 @@ def run(input_dir, output_dir):
             f.write(new_doc)
 
 if __name__ == '__main__':
-    if os.getcwd()[-3:] != 'cge':
-        sys.exit('Must only be run in cge/!')
+    if os.getcwd()[-3:] != 'fge':
+        sys.exit('Must only be run in fge/!')
     # sort dirs
     input_dir = os.path.join(os.getcwd(), '_docs_repo')
     if '_docs_repo' not in os.listdir(os.getcwd()):
