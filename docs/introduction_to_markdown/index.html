@@ -29,7 +29,7 @@
         Introduction to Markdown
     </h1>
     <b>Status</b>: complete<br>
-    <b>Last edit</b>: Sun May 3, 015<br>
+    <b>Last edit</b>: Fri Jun 1, 2015<br>
     <b>Author(s)</b>: Dominic Bennett (100.0%)<br>
 
 
@@ -87,30 +87,36 @@
             <a href="https://github.com/BES-QSIG/docs/blob/master/introduction_to_markdown.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
         </div>
         <div class="doc-content">
-          <p><em>This tutorial explains the Markdown syntax for tutorials hosted on this
-website. To see the raw text version click <a href="https://raw.githubusercontent.com/BES-QSIG/docs/master/introduction_to_markdown.md">here</a>.</em></p>
+          <p>This tutorial explains the Markdown syntax for tutorials hosted on this
+website. Although, Markdown comes in a variety of flavours -- most ecologists
+would be familiar with R markdown -- they all have very similar syntaxes with
+many of it being interchangeable. On this website we use GitHub flavoured
+markdown.</p>
+
+<h2 id="extension">Extension</h2>
+
+<p>Always save your markdown files: <code>[name_file].md</code></p>
 
 <h2 id="metadata">Metadata</h2>
 
 <p>At the very top of every document metadata is provided to tell the website how
 the page should be set-up, it&#39;s called <em>front-matter</em>. Don&#39;t worry about how
-it works, all that is required is to provide layout, status, author, title and
+it works, all that is required is to provide layout, status, title and
 link parameters. So for this document the parameters are:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">---
 layout: doc
 status: complete
-author: [Dom Bennett]
 title: Introduction to Markdown
 permalink: /docs/introduction_to_markdown/
 ---
 </code></pre></div>
-<p>Simply copy this and place it at the top of any document you create. The title
-specifies the name of the page that will appear in users&#39; browsers. The
-permalink is always <code>/docs/[name_of_file]</code>, with the name of the file ignoring
-the extension. Currently status can either be &#39;incomplete&#39; or &#39;complete&#39;.
-Also, remember to add your name to the author list if you have contributed
-substantially to any document you edit, e.g. <code>[John Smith,Mary Jane]</code>.
-(In the future this will be automatically generated from the git history.)</p>
+<p>Simply copy this and place it at the top of any document you create. <code>layout</code>
+must always be doc, it tells the website how to parse the file. <code>title</code>
+specifies the name of the page that will appear in users&#39; browsers.
+<code>permalink</code> is always <code>/docs/[name_of_file]</code>, with the name of the file ignoring
+the extension. <code>status</code> is a free text field, you could write things
+like &#39;in development&#39; or &#39;complete&#39; to let your readers know how likely the
+guide is to change or whether you&#39;re looking for help.</p>
 
 <h2 id="headings">Headings</h2>
 
@@ -139,6 +145,18 @@ Words words words ....
 
 <p>Words words words ....</p>
 
+<h2 id="asides">Asides</h2>
+
+<p>Use the &gt; symbol to make text into an aside. For example:</p>
+
+<p><code>&gt;Hello! I&#39;m being self-referential!</code></p>
+
+<p>.... produces:</p>
+
+<blockquote>
+<p>Hello! I&#39;m being self-referential!</p>
+</blockquote>
+
 <h2 id="lists">Lists</h2>
 
 <p>Bullet point lists are created with <code>*</code>, numbered lists with numbers. e.g.</p>
@@ -166,7 +184,7 @@ Words words words ....
 <div class="highlight"><pre><code class="language-text" data-lang="text">[hyperlinked text](url/to/link)
 </code></pre></div>
 <p>To link between different documents on the website use the <code>site.baseurl</code>
-command:</p>
+command within curly brackets:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">[hyperlinked text]({{ site.baseurl }}/docs/name_of_page.md)
 </code></pre></div>
 <p>To add images, the syntax is very similar:</p>
@@ -192,17 +210,12 @@ bottom of the page. So using it gives ....</p>
 
 <p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/mara_cat.jpg" alt="cat" title="This is my cat, she&#39;s called Mara."></p>
 
-<p><em>Miaow miaow</em>.</p>
-
 <h2 id="code-blocks">Code blocks</h2>
 
-<p>This probably the most important element for coding manuals and tutorials.
-Markdown makes these very easy to insert with language-specific syntax
-colouring.</p>
-
-<p>To insert code inline use `. I use this to highlight <code>folders/</code>,
-<code>variables</code>, <code>functions</code> etc. if I refer to them in-text. To insert blocks of
-text, indent the paragraph as I have been doing above for Markdown examples, e.g.</p>
+<p>This is probably what gives Markdown the edge. To insert code inline use `.
+I use this to highlight <code>folders/</code>, <code>variables</code>, <code>functions</code> etc. if I refer to
+them in-text. To insert blocks of text, indent the paragraph as I have been
+doing above for Markdown examples, e.g.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -211,10 +224,9 @@ velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
 occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
 anim id est laborum.
 </code></pre></div>
-<p>We use GitHub flavoured markdown so for syntax code colouring, the code block
-is specified using three ` and the name of the language at the beginning of
-the code block and three `  at the end. For example, this block of <code>R</code>
-code ....</p>
+<p>For syntax code colouring, the code block is specified using three ` and the
+name of the language at the beginning of the code block and three `  at the
+end. For example, this block of <code>R</code> code ....</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">```R
 greeting &lt;- &#39;Hello world!&#39;
 for (letter in greeting) {
@@ -245,12 +257,70 @@ print(greeting)
 <p>For a full list of available languages click
 <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml">here</a>.</p>
 
+<h2 id="tables">Tables</h2>
+
+<p>You can construct tables using <code>|</code> and <code>-</code>. Use <code>|</code> to separate columns,
+new lines to separate rows and <code>-</code> to mark headers. For example:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">|**Col1** | **Col2** |
+| ------- | -------- |
+|row1col1|row1col2|
+|row2col1|row2col2|
+</code></pre></div>
+<p>.... produces:</p>
+
+<table><thead>
+<tr>
+<th><strong>Col1</strong></th>
+<th><strong>Col2</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>row1col1</td>
+<td>row1col2</td>
+</tr>
+<tr>
+<td>row2col1</td>
+<td>row2col2</td>
+</tr>
+</tbody></table>
+
+<h2 id="previewing">Previewing</h2>
+
+<p>It may be useful to preview your script before uploading. You can use online
+previewers, such as:</p>
+
+<ul>
+<li><a href="http://tmpvar.com/markdown.html">tmpvar&#39;s</a></li>
+<li><a href="http://jbt.github.io/markdown-editor">jbt&#39;s</a></li>
+</ul>
+
+<p>Or by working with a good text editor that has GitHub markdown syntax
+highlighting and previewing:</p>
+
+<ul>
+<li><a href="https://atom.io/">Atom</a></li>
+<li><a href="http://www.sublimetext.com/">Sublime</a></li>
+</ul>
+
+<h2 id="converters">Converters</h2>
+
+<p>If you already have a guide written in a different markup language (such as
+  HTML, Latex or even pdf!) you can use a converter to transform it into
+markdown. See <a href="http://pandoc.org/README.html">pandocs</a> for more details.</p>
+
 <h2 id="further-reading">Further reading</h2>
 
-<p>Other features are also available for Markdown such as tables. You can also
-insert <code>HTML</code> into the Markdown file if you want to do anything complicated.</p>
+<p>When embarking on writing a tutorial, feel free to copy the markdown of other
+files in the <code>docs/</code> repo. Click on the &#39;Improve page&#39; pencil at the top to
+see the page in GitHub and click &#39;raw&#39; to see the text script, unparsed.</p>
 
-<p>Here are some useful references:</p>
+<p>Note, however, that some tutorials may have been generated using automatic
+converters may use a different syntax to that described in this document.</p>
+
+<p>For more complicated features you can also use <code>HTML</code>. We can also add to the
+website <code>css</code> for any custom classes.</p>
+
+<p>Useful references:</p>
 
 <ul>
 <li><a href="http://daringfireball.net/projects/markdown/syntax">Official Markdown Syntax</a></li>
@@ -286,6 +356,12 @@ insert <code>HTML</code> into the Markdown file if you want to do anything compl
       
         
           <li><a href="http://bes-qsig.github.io/fge/docs/how_to_contribute/">How to contribute</a></li>
+        
+      
+        
+      
+        
+      
         
       
         
