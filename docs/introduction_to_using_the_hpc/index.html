@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>FGE &middot; Introduction to using the HPC</title>
+  <meta name="description" content="Crowd-sourced notes on all things computational and quantitative in ecological research">
+
+  <link rel="stylesheet" href="/fge/css/main.css">
+  <link rel="canonical" href="http://bes-qsig.github.io/fge/docs/introduction_to_using_the_hpc/">
+  <link rel="alternate" type="application/rss+xml" title="Field Guides for Ecologists" href="http://bes-qsig.github.io/fge/feed.xml" />
+  <link rel="icon" type="image/x-icon" href="/fge/favicon.ico">
+  <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+</head>
+
+
+  <body>
+
+    <header>
+    <div class="site-header" data-stellar-background-ratio="0.1"
+         style="background-image: url(/fge/img/cover.jpg)">
+        <div class='site-title'>
+            
+    <h1>
+        Introduction to using the HPC
+    </h1>
+    <b>Status</b>: incomplete<br>
+    <b>Last edit</b>: Thu Sep 3, 015<br>
+    <b>Author(s)</b>: Dominic Bennett (100.0%)<br>
+
+
+        </div>
+    </div>
+</header>
+
+<script>
+    $.stellar({
+        horizontalScrolling: false,
+        responsive: true,
+        positionProperty: 'transform'
+    });
+</script>
+
+<div class="site-nav-bar">
+
+    <nav class="site-nav">
+        <a href="#" class="menu-icon">
+            <svg viewBox="0 0 18 15">
+                <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+        </a>
+
+        <div class="trigger">
+            
+                <a class="page-link"
+                   href="/fge/">
+                    Home
+                </a>
+            
+                <a class="page-link"
+                   href="/fge/guides">
+                    Index
+                </a>
+            
+            <a class="page-link" href="https://github.com/BES-QSIG">
+                GitHub
+            </a>
+        </div>
+    </nav>
+
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+          <section class="docs">
+    <div class="grid">
+
+      <div class="unit four-fifths">
+        <div class="edit-message">
+            <a href="https://github.com/BES-QSIG/docs/blob/master/introduction_to_using_the_hpc.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
+        </div>
+        <div class="doc-content">
+          <h2 id="introduction">Introduction</h2>
+
+<p>The HPC (High Performance Computing) service is a means to run programs in
+parallel. Although this can be done on your local machine, it cannot be done
+on anywhere near the same scale. This allows you to run programs that might have
+taken months if not years to complete in a few hours or days. The HPC is a UNIX
+based server that consists of multiple CPUs. An HPC service is usually provided
+by your university or research institute. If not, there are other commercial
+services available. These servers are often composed of 1,000s of cores each
+equivalent to a powerful computer.</p>
+
+<h2 id="what-is-parallel-computing?">What is parallel computing?</h2>
+
+<p>Parallel computing is the opposite of sequential computing. Instead of running
+a program over a set of data sequentially, you split the data up into chunks
+and run the program sequentially over those chunks simultaneously. To give a
+trivial example, imagine a program that consists of a single for loop that
+prints the numbers 1 to 100. A simple way to parallelise this program would be
+to run two for loops simultaneously, one counting the numbers 1-50 and the
+other, 51-100. This, in theory, should be twice as fast. The only downside is
+running two processes in parallel will take twice the amount of computing power.</p>
+
+<h2 id="do-i-need-the-hpc?">Do I need the HPC?</h2>
+
+<p>If you have a program that is taken a long time you may need to use the HPC. I
+would suggest, however, to only use the HPC if you&#39;ve got a program which is
+taking months to complete rather than days. Understanding how to use the HPC can
+be a long process and for programs that can be parallelised on your local machine
+there are simpler alternatives. If you&#39;re an R user <a href="http://www.r-bloggers.com/parallel-r-loops-for-windows-and-linux/">here</a>
+is a really good blog post on how to parallelise your for loops. For python
+users, you can make use of a variety of libraries: <a href="https://docs.python.org/2/library/queue.html">Queue</a>,
+<a href="https://docs.python.org/2/library/threading.html">threading</a> and
+<a href="https://docs.python.org/2/library/subprocess.html">subprocess</a>. And then in
+this <a href="http://stackoverflow.com/questions/2846653/python-multithreading-for-dummies">example</a>.</p>
+
+<h2 id="a-simple-guide-on-how-to-use-the-hpc">A simple guide on how to use the HPC</h2>
+
+<h3 id="you-will-need">You will need</h3>
+
+<ol>
+<li>A user account on an HPC server. This will usually require a demonstration
+of need, competence in using UNIX command-line (see our <a href="http://bes-qsig.github.io/fge/docs/unix_ssh_introduction/">guide</a>)
+and, often, for you to complete a tutorial on using the HPC (institution dependent).</li>
+<li>A program that can be parallelised.</li>
+</ol>
+
+<h3 id="how-to-parallelise-a-program">How to parallelise a program</h3>
+
+<p>In the above trivial example, we had a for loop counting from 1-100. This is a
+readily parallelisable program because the process of printing each number is
+independent. We can cut the data set (in this case the numbers 1-100) into a
+maximum of 100 chunks, and run each chunk as a separate process. The process of
+printing a number is called a <strong>job</strong>. So long as jobs are independent then a
+program can be easily parallelised. If, however, our program was more
+complicated and the results of one job depended on the results of another then
+the program would be very difficult to parallelise. Parallelising such programs
+is possible but is beyond the scope of this document (look up the map-reduce
+method and perhaps find an expert in high performance computing).</p>
+
+<p>Make sure the program you are using has options or a version that can run on an
+HPC server, e.g. look for the words &#39;MPI&#39;. Otherwise, if you&#39;re running your own
+program then you may have to rejig it to get it to work on the HPC. You will
+need to check the following things:</p>
+
+<ul>
+<li>Is my program divisable into independent jobs?</li>
+<li>How can I cut my program up into these jobs?</li>
+<li>How can I run each job independently?</li>
+</ul>
+
+<p>If you can run a script with an argument that will work on one part of your data
+set independently of other parts, then you can run your program in parallel.
+At this stage you simply need to create a <strong>task farm</strong> script that will run
+your program in chunks. Below is a python script that outlines how this can be
+done. The script consists of three functions: <code>job()</code>, <code>master()</code> and <code>worker()</code>.
+It takes a <strong>worklist</strong> (the list of all jobs that needs to be run), feeds them
+to a <strong>worker</strong> (as executed by the <code>worker()</code> function) that executes the job,
+waits for the job to finish and sends a signal to the <strong>master</strong> (as executed by
+the <code>master()</code> function) to call for another job. This continues until the
+worklist is depleted. The job can be anything (excution of python scripts,
+R scripts or any other program), it will simply run a script using whatever
+argument has been given to it via the worklist.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#! /bin/usr/env python</span>
+
+<span class="c"># PACKAGES</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
+
+
+<span class="c"># GLOBALS</span>
+<span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
+<span class="n">rank</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
+
+<span class="c"># FUNCTIONS</span>
+<span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="n">jobid</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Run independent job&#39;&#39;&#39;</span>
+    <span class="k">print</span> <span class="s">&quot;running job &quot;</span><span class="p">,</span> <span class="n">jobid</span>
+
+
+<span class="k">def</span> <span class="nf">master</span><span class="p">(</span><span class="n">worklist</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;The task master takes a work list and farms it out to the workers.&#39;&#39;&#39;</span>
+    <span class="c"># Check we are not using more ranks than what we need.</span>
+    <span class="n">nranks</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_size</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">worklist</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">nranks</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;WARNING: There are fewer tasks than ranks. You are wasting </span><span class="se">\</span>
+<span class="s">resources!&quot;</span>
+        <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">worklist</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nranks</span><span class="p">):</span>
+            <span class="c"># Catch the send</span>
+            <span class="n">buff</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">rank</span><span class="p">)</span>
+            <span class="c"># Send completion signal</span>
+            <span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">rank</span><span class="p">)</span>
+        <span class="c"># Reset number of ranks.</span>
+        <span class="n">nranks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">worklist</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+    <span class="c"># Farm out tasks</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">worklist</span><span class="p">:</span>
+        <span class="c"># Probe for any idle worker.</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">Status</span><span class="p">()</span>
+        <span class="n">buff</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">ANY_SOURCE</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="p">)</span>
+        <span class="n">idle_worker</span> <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="n">Get_source</span><span class="p">()</span>
+        <span class="c"># Give worker task</span>
+        <span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">idle_worker</span><span class="p">)</span>
+    <span class="c"># Send null task to signal completion.</span>
+    <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nranks</span><span class="p">):</span>
+        <span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">rank</span><span class="p">)</span>
+    <span class="k">return</span>
+
+
+<span class="k">def</span> <span class="nf">worker</span><span class="p">(</span><span class="n">task_operation</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;The worker takes as an input the operation it should apply to the tasks</span>
+<span class="sd">       that it receives from the task master.&#39;&#39;&#39;</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c"># Alert master that we are waiting.</span>
+        <span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+        <span class="c"># Wait for a task</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">task_operation</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+    <span class="k">return</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">worklist</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c"># obtain worklist from command-line</span>
+    <span class="k">print</span> <span class="s">&#39;Using: &#39;</span><span class="p">,</span> <span class="n">worklist</span>
+    <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">master</span><span class="p">(</span><span class="n">worklist</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">worker</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+</code></pre></div>
+<p>For example, to go back to my trivial example of counting 1-100. Let&#39;s imagine
+I want to run two workers (1-50, 51-100). I could then create two R scripts
+that looped through the two sets of numbers: 1_50.R and 51_100.R. The <code>job()</code>
+function could then be a function that takes as an argument the name of an R
+script and executes it. I would then execute the task farm like so:
+<code>task_farm.py 1-50.R 51-100.R</code>. (In practice, this is not a great example as
+it would require each job to have its own script.)</p>
+
+<h3 id="pbs-script">PBS script</h3>
+
+<p>The PBS script is the instructions for running your parallel program across
+all the nodes and clusters available to you through the HPC server. It specifies
+the number of processes you wish to use and the amount of time you require for
+it to run. Below is an example of a pbs script.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+<span class="c">#PBS -l select=1:ncpus=16:mpiprocs=16:ompthreads=1</span>
+<span class="c">#PBS -l walltime=24:00:00</span>
+
+mpiexec python path_to_task_farm.py argument_for_task_farm.py
+</code></pre></div>
+<p>In this example it consists of two key elements: the PBS instructions denoted
+with <code>#PBS</code> and the execution command for the task farm script. The PBS
+instructions select 1 node of 16 CPUs. It allows up to 16 workers (called
+mpiprocs) and each of these workers use 1 thread each. If I wanted to double
+the number of workers I would make <code>select=2</code>, as this would select 2 nodes
+instead of 1. The instructions also prevent the program from running for more
+than 24 hours. You should check with your administrator what sort of cores are
+available to you and what the maximum walltime is.</p>
+
+<h3 id="hpc-structure">HPC structure</h3>
+
+<p>An HPC server contains multiple cores. Each core can have a number of CPUs.
+For example, on my HPC server I have access to three types of core: 16CPU, 12CPU
+ and an 8CPU. So if I wanted to select 24 CPUs I could select 2 12CPU cores,
+or if I needed 32 I could select 4 8CPU cores or 2 16CPU cores. Just make sure
+you are not selecting cores that do not exist on the server. If you do this,
+your program will be queued indefinitely. (On my system it is put on a queue
+called Monster.)</p>
+
+<h3 id="launching-and-checking">Launching and checking</h3>
+
+<p>To launch a PBS script you use the command <code>qsub</code>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">qsub my_pbs_script.sh
+</code></pre></div>
+<p>This will add the script to a queue. To check whether your script is being run
+use the <code>qstat</code> function.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">qstat  # no arguments necessary
+</code></pre></div>
+<p>This will print to screen, the ID of your job, how long the program has been
+running or whether it is still in the queue. All output and error messages
+generated by your program are sent to files called: [name of job].e[ID] and
+[name of job].o[ID]. These will not be available until after walltime, and
+there is always a few minutes delay. It is always good therefore to have an
+alternative way of making sure your program is running correctly. For programs
+jobs always make changes to directories, I can then check the progress of my
+program by counting the number of changes to these directories.</p>
+
+<h2 id="hpc-directory-house-keeping">HPC directory house-keeping</h2>
+
+<h3 id="logging-in">Logging in</h3>
+
+<p>To log in you will need to use the <code>ssh</code> command or WinSCP if you&#39;re using
+Windows. You will need to check what your account username and password is
+through the system administrator. Once logged in you will be taken to your
+home directory. A HPC server consists of multiple nodes, you log into the
+login node. Usually you will not be running any programs on this login node. It
+is just the portal for executing commands that run across all the nodes in the
+HPC.</p>
+
+<h3 id="home-and-work-directory">Home and work directory</h3>
+
+<p>You usually have available to you two directories where you can store data:
+the home and work directories. The home directory is smaller than the work, you
+should check these details with your administrator. I usually store my programs
+in the home directory and all my data and results files in the work directory.
+I also create a link to my work directory in the home directory to prevent
+having to write the work directory multiple times, e.g.
+<code>bash
+ln -s /work/[username] work
+</code></p>
+
+<h3 id="modules">Modules</h3>
+
+<p>You usually have a variety of programs available to you already on the HPC
+server. If a command is not recognised, you may have to manually load programs
+using the <code>module</code> function.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">module av  <span class="c"># list all available modules</span>
+module load <span class="o">[</span>name-of-module<span class="o">]</span>  <span class="c"># load the module</span>
+</code></pre></div>
+<p>I add these commands to my bash profile for any programs I use regularly.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># make sure you&#39;re in your home directory
+echo &#39;module load python/2.7.3 &gt;&gt; .bash_profile&#39;  # my preferred version of python
+</code></pre></div>
+<h3 id="installing-packages-and-programs">Installing packages and programs</h3>
+
+<p>You may have to install dependent packages, libraries and programs in order to
+run your program(s) that may not be available from modules. You can either
+request an administrator to install it for you, or you may have to compile it
+yourself in your home directory. You can compile programs yourself so long as
+you do not append them to the system path (which requires administrator
+privileges). Instead you will have to directly call your compiled version of
+the program with its absolute link. Or you could create your own virtual
+environment (document coming for this soon!). When compiling yourself make sure
+you are aware of the HPC architecture (Intel, AMD ...) and call the relevant
+modules before compilation, this will allow the compiled program to run more
+efficiently.</p>
+
+<h2 id="useful-links">Useful links</h2>
+
+<p>Your best source of information for using the HPC server is from your
+administrator and the HPC technical team. They should offer courses and guides.
+Otherwise, there is plenty of information on the web that can be of use.
+Here are some links for different institute&#39;s HPC services (some institutes are
+better at giving instructions than others ....). Although HPC systems differ
+between institutions they are quite similar and can still be helpful, particular
+if common problems keep occurring.</p>
+
+<ul>
+<li><a href="http://bose.utmb.edu/Compu_Center/Cluster_users/PBS%20HOWTO/PBS_HOW_TO.html">UTMB</a></li>
+<li><a href="http://www.arc.ox.ac.uk/content/pbs">Oxford</a></li>
+<li><a href="https://www.msi.umn.edu/resources/job-submission-and-scheduling-pbs-scripts">Minnesota</a></li>
+<li><a href="https://hpcc.usc.edu/support/documentation/running-a-job-on-the-hpcc-cluster-using-pbs/">USC</a></li>
+</ul>
+
+<p>And background information ....</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Supercomputer">Wiki</a></li>
+</ul>
+
+<h2 id="acknowledgments">Acknowledgments</h2>
+
+<p>Thanks to Gerard Gorman for the python task farm example.</p>
+
+        </div>
+      </div>
+
+      <div class="unit one-fifth hide-on-mobiles">
+    <aside>
+    <hr class='doc-bar'> </hr>
+    <b>Related</b><br>
+    <ul>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="http://bes-qsig.github.io/fge/docs/introduction_to_using_the_hpc/">Introduction to using the HPC</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="http://bes-qsig.github.io/fge/docs/unix_ssh_introduction/">UNIX (and SSH) introduction</a></li>
+        
+      
+    </ul>
+    <hr class='doc-bar'> </hr>
+    </aside>
+</div>
+
+
+  </div>
+
+  </section>
+
+      </div>
+    </div>
+
+    <!--<footer class="site-footer">
+
+</footer>
+-->
+    <!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64066157-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </body>
+
+</html>
