@@ -112,7 +112,7 @@ def read_doc(doc_path, input_dir):
 
 
 def run(input_dir, output_dir):
-    """Make docs in _docs_repo/ CGE friendly"""
+    """Make docs in _docs_repo/ FGE friendly"""
     # get docs
     docs = [e for e in os.listdir(input_dir) if re.search('\.md', e)]
     docs = [e for e in docs if e != 'README.md']
