@@ -150,7 +150,8 @@ pre {
   border-top: 3px solid #424242;
   border-bottom: 1px solid #424242;
   background-attachment: fixed;
-  height: 450px; }
+  height: 450px;
+  background-size: cover; }
 
 .site-title {
   color: white;
