@@ -25,8 +25,7 @@ authors: {0}
 lastchange: {1}
 title: {2}
 status: {3}
-theme: {4}
-permalink: {5}
+permalink: {4}
 ---
 """
 
@@ -124,11 +123,10 @@ def run(input_dir, output_dir):
         last_change = get_last_change(doc, input_dir)
         title = doc_fm['title']
         status = doc_fm['status']
-        theme = doc_fm['theme']
-        permalink = doc_fm['permalink']
+        permalink = '/docs/{0}/'.format(doc.replace('.md', ''))
         # construct front-matter
         new_fm = front_matter.format(authors, last_change, title, status,
-                                     theme, permalink)
+                                     permalink)
         # combine
         new_doc = new_fm + doc_text
         # write out
