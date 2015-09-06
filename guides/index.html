@@ -12,16 +12,31 @@ themes:  # set the themes as found in docs here to list them all
 ---
 
 <section class="page">
-    <div class="unit whole">
-        {% for theme in page.themes %}
-            <h1>{{ theme | capitalize }}</h1>
-            <ul>
-            {% for doc in site.docs %}
-                {% if doc.theme == theme %}
-                    <li><a href="{{ doc.url | prepend: site.baseurl }}">{{ doc.title }}</a></li>
-                {% endif %}
-            {% endfor %}
-            </ul>
-        {% endfor %}
+    <div>
+      <script>
+        (function() {
+          var cx = '007667397270974397171:ytfqeo626by';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+              '//cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      </script>
+      <gcse:search></gcse:search>
     </div>
+    {% for theme in page.themes %}
+        <h1>{{ theme | capitalize }}</h1>
+        <div class="unit half">
+          <ul>
+          {% for doc in site.docs %}
+              {% if doc.theme == theme %}
+                  <li><a href="{{ doc.url | prepend: site.baseurl }}">{{ doc.title }}</a></li>
+              {% endif %}
+          {% endfor %}
+          </ul>
+        </div>
+    {% endfor %}
 </section>
