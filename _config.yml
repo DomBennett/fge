@@ -37,7 +37,7 @@ menu:
     url:          /guides
 
 # 'Collections' settings
-exclude: ['_docs/README.md', '_docs/LICENSE']
+exclude: ['_docs/README.md', '_docs/LICENSE', 'build.py']
 collections:
   docs:
     output: true
