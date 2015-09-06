@@ -17,6 +17,7 @@ import re
 import sys
 import subprocess
 import operator
+from shutil import copyfile
 
 # GLOBALS
 front_matter = """---
@@ -143,5 +144,12 @@ if __name__ == '__main__':
     output_dir = os.path.join(os.getcwd(), '_docs')
     if not os.path.isdir(output_dir):
         os.mkdir(output_dir)
+    # move yaml index
+    data_dir = os.path.join(os.getcwd(), '_data')
+    if not os.path.isdir(data_dir):
+        os.mkdir(data_dir)
+    docs_index_src = os.path.join(input_dir, 'index.yml')
+    docs_index_d = os.path.join(data_dir, 'docs.yml')
+    copyfile(docs_index_src, docs_index_d)
     # run
     run(input_dir=input_dir, output_dir=output_dir)
