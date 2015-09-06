@@ -1,14 +1,6 @@
 ---
 layout: default
 title: Index
-themes:  # set the themes as found in docs here to list them all
-    - introduction
-    - git
-    - reproducibility
-    - distribution
-    - unix
-    - philosophy
-    - guides
 ---
 
 <section class="page">
@@ -28,16 +20,15 @@ themes:  # set the themes as found in docs here to list them all
       <gcse:search></gcse:search>
     </div>
     <div class="grid">
-      {% for theme in page.themes %}
+      {% for theme in site.data.docs %}
         <div class="unit one-third">
-          <h3>{{ theme | capitalize }}</h3>
-          <ul>
+          <h3>{{ theme.title }}</h3>
           {% for doc in site.docs %}
-              {% if doc.theme == theme %}
-                  <li><a href="{{ doc.url | prepend: site.baseurl }}">{{ doc.title }}</a></li>
+            {% assign doc_id = doc.url | split: '/' | last %}
+              {% if theme.docs contains doc_id %}
+                <li><a href="{{ doc.url | prepend: site.baseurl }}">{{ doc.title }}</a></li>
               {% endif %}
           {% endfor %}
-          </ul>
         </div>
     {% endfor %}
   </div>
