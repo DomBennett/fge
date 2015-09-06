@@ -1,10 +1,18 @@
+{% assign doc_id = page.url | split: '/' | last %}
+{% for theme in site.data.docs %}
+    {% if theme.docs contains doc_id %}
+      {% assign theme_docs = theme.docs %}
+      {% assign theme_title = theme.title %}
+    {% endif %}
+{% endfor %}
 <div class="unit one-fifth hide-on-mobiles">
     <aside>
     <hr class='doc-bar'> </hr>
-    <b>Related</b><br>
+    Also in <i>{{ theme_title }}</i>:<br>
     <ul>
       {% for doc in site.docs %}
-        {% if doc.theme == page.theme %}
+        {% assign doc_id = doc.url | split: '/' | last %}
+        {% if theme_docs contains doc_id %}
           <li><a href="{{ site.url | append: site.baseurl | append: doc.permalink }}">{{ doc.title }}</a></li>
         {% endif %}
       {% endfor %}
