@@ -8,3 +8,4 @@ _site/
 # docs branch
 _docs/
 _docs_repo/
+_data/docs.yml
