@@ -27,9 +27,10 @@ themes:  # set the themes as found in docs here to list them all
       </script>
       <gcse:search></gcse:search>
     </div>
-    {% for theme in page.themes %}
-        <h1>{{ theme | capitalize }}</h1>
-        <div class="unit half">
+    <div class="grid">
+      {% for theme in page.themes %}
+        <div class="unit one-third">
+          <h3>{{ theme | capitalize }}</h3>
           <ul>
           {% for doc in site.docs %}
               {% if doc.theme == theme %}
@@ -39,4 +40,5 @@ themes:  # set the themes as found in docs here to list them all
           </ul>
         </div>
     {% endfor %}
+  </div>
 </section>
