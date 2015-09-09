@@ -2,14 +2,29 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>{% if page.title == "Home" %}{{ site.title }}{% else %}{{ site.acronym }} &middot; {{ page.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.subtitle }}{% endif %}">
-
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
   <link rel="icon" type="image/x-icon" href="{{ "/favicon.ico" | prepend: site.baseurl }}">
-  <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
-  <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+  <script type="text/javascript" src="{{ "/js/jquery-2.1.0.min.js" | prepend: site.baseurl }}"></script>
+  <script type="text/javascript" src="{{ "/js/jquery.stellar.min.js" | prepend: site.baseurl }}"></script>
+  <script>
+    $(document).on('ready', function(){
+      // dynamically choose background image
+      // convert cover.yml to js variables
+      {% assign imgurls = site.data.covers | map: 'imgurl' %}
+      var imgurls = ["{{ imgurls | join: '", "' }}"];
+      {% assign crediturls = site.data.covers | map: 'crediturl' %}
+      var crediturls = ["{{ crediturls | join: '", "' }}"];
+      {% assign titles = site.data.covers | map: 'title' %}
+      var titles = ["{{ titles | join: '", "' }}"];
+      {% assign authors = site.data.covers | map: 'author' %}
+      var authors = ["{{ authors | join: '", "' }}"];
+      var rand = Math.floor(Math.random()*imgurls.length);
+      $(".site-header").css({'background-image': 'url(' + imgurls[rand] + ')'});
+      $('#pphotocredit').html("<i>Cover photo credit</i>: <a href=" + crediturls[rand] + ">" + titles[rand] + " (by " + authors[rand] + ")</a>");
+    })
+  </script>
 </head>

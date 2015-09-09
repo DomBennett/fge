@@ -5,15 +5,25 @@
     border-top: 3px solid $grey-color-dark;
     border-bottom: 2px solid $grey-color-dark;
     background-attachment: fixed;
-    height: 450px;
-    background-size: cover;
+    height: 550px;
+    background-position: center;
+    background-size: contain;
+    //background-image: url(https://raw.githubusercontent.com/BES-QSIG/fge/master/img/cover.jpg);
+}
+
+.photocredit {
+  font-size: x-small;
+  font-style: italic;
+  text-align: right;
+  padding-right: 50px;
+  padding-top: 5px;
 }
 
 .site-title {
     color: $front-color;
     text-align: center;
     letter-spacing: -1px;
-    margin-top: 200px;
+    margin-top: 275px;
     text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
