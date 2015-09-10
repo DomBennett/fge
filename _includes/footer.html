@@ -26,8 +26,17 @@
     <img src='/fge/img/besqsig_logo.png' width="100" height="100" alt="BES-QSIG" style='margin-right:10px'>
     <img src='/fge/img/jekyll_logo.png' width="120" height="60" alt="Jekyll" style="margin-right:10px">
     <img src='/fge/img/github_logo.png' width="150" height="50" alt="GitHub" style="margin-right:10px">
-    <p id="pphotocredit">
-      Unknown photo
-    </p>
+    {% if page.url != "/404.html" %}
+      <p id="pphotocredit">
+        Unknown photo
+      </p>
+    {% else %}
+      <p>
+        <i>Cover photo credit</i>:
+        <br> <a href="https://commons.wikimedia.org/wiki/File:Lost_sheep_on_farm_track._-_geograph.org.uk_-_368111.jpg">
+          Lost sheep on track (by Johnny Durnan)
+        </a>
+      </p>
+    {% endif %}
   </div>
 </footer>
