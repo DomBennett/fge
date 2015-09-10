@@ -32,6 +32,18 @@ permalink: {4}
 
 
 # FUNCTIONS
+def get_contributors(input_dir):
+    """Return list of all authors in alphabetical order"""
+    # read git log
+    cmd = "git log --format='%an' | sort -u"
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE,
+                               shell=True, stderr=subprocess.PIPE,
+                               cwd=input_dir)
+    gitlog, _ = process.communicate()
+    contributors = gitlog.split('\n')[:-1]
+    return contributors
+
+
 def get_contributions(doc_path, input_dir):
     """Return string of authors and their percentage contributions"""
     # read git log
@@ -153,3 +165,8 @@ if __name__ == '__main__':
     copyfile(docs_index_src, docs_index_d)
     # run
     run(input_dir=input_dir, output_dir=output_dir)
+    # put contributors in data/contributors.yml
+    conts = get_contributors(input_dir)
+    with open(os.path.join(data_dir, 'contributors.yml'), 'wb') as f:
+        for cont in conts:
+            f.write("- {0}\n".format(cont))
