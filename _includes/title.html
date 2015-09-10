@@ -12,7 +12,7 @@
     <h1>
         {{ page.title }}
     </h1>
-    <b>Status</b>: {{ page.status }}<br>
-    <b>Last edit</b>: {{ page.lastchange }}<br>
     <b>Author(s)</b>: {{ page.authors | join: ', ' }}<br>
+    <b>Status</b>: {{ page.status }} |
+    <b>Last edit</b>: {{ page.lastchange }}<br>
 {% endif %}

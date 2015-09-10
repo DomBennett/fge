@@ -24,7 +24,22 @@
       var authors = ["{{ authors | join: '", "' }}"];
       var rand = Math.floor(Math.random()*imgurls.length);
       $(".site-header").css({'background-image': 'url(' + imgurls[rand] + ')'});
-      $('#pphotocredit').html("<i>Cover photo credit</i>: <a href=" + crediturls[rand] + ">" + titles[rand] + " (by " + authors[rand] + ")</a>");
+      $('#pphotocredit').html("<i>Cover photo credit</i>:<br> <a href=" + crediturls[rand] + ">" + titles[rand] + " (by " + authors[rand] + ")</a>");
     })
+  </script>
+  <script>
+    $(document).ready(function(){
+  	   $(window).bind('scroll', function() {
+  	      var distance = $('.site-header').css('height');
+          var distance = Number(distance.replace('px', ''));
+          //console.log(distance);
+          if ($(window).scrollTop() > distance) {
+           $('.site-nav-bar').addClass('scrolled');
+          }
+          else {
+           $('.site-nav-bar').removeClass('scrolled');
+          }
+  		});
+  	});
   </script>
 </head>
