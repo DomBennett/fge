@@ -6,9 +6,8 @@
 <body>
   {% if page.layout == "doc" or page.title == "Home" %}
     {% include header.html %}
-  {% else %}
-    {% include simpleheader.html %}
   {% endif %}
+  {% include sitenav.html %}
 
   <div class="page-content">
     <div class="wrapper">
