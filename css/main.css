@@ -175,12 +175,14 @@ pre {
   size: 8;
   align: center; }
 
+#site-nav-unit {
+  font-size: x-large;
+  padding-top: 12px;
+  padding-right: 100px; }
+
 .site-nav-bar {
   background-color: #424242;
-  padding-top: 5px;
-  text-align: center;
   z-index: 9999;
-  width: 100%;
   position: relative;
   top: 0;
   left: 0;
