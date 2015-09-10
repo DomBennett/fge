@@ -7,7 +7,7 @@
     background-attachment: fixed;
     height: 700px;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     //background-image: url(https://raw.githubusercontent.com/BES-QSIG/fge/master/img/cover.jpg);
 }
 
@@ -130,6 +130,7 @@
  */
  .doc-content {
      padding: $spacing-unit 0;
+     min-height: $min-content-height;
  }
 
  .doc-box {
@@ -182,6 +183,7 @@
  */
 .page-content {
     padding: $spacing-unit 0;
+    min-height: $min-content-height;
 }
 
 .page-heading {

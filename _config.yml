@@ -36,6 +36,9 @@ menu:
   - title:        Index
     url:          /guides
 
+  - title:        News
+    url:          /news
+
 # 'Collections' settings
 exclude: ['_docs/README.md', '_docs/LICENSE', 'build.py']
 collections:

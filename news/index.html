@@ -3,14 +3,20 @@ layout: default
 title: News
 permalink: /news/
 ---
-<ul class="post-list">
-  {% for post in site.posts %}
-    <li>
-      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-      <h2>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </h2>
-    </li>
-  {% endfor %}
-</ul>
+{% for post in site.posts %}
+  <h2 class="post-title">
+    {{ post.title }}
+  </h2>
+
+  <div class="post-meta">
+    <span class="post-date">
+      {{ post.date | date: "%b %-d, %Y" }}
+    </span>
+  </div>
+
+  <div class="post-content">
+    {{ post.content }}
+  </div>
+
+{% endfor %}

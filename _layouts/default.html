@@ -4,8 +4,10 @@
 {% include head.html %}
 
 <body>
-  {% if page.url != "/404.html" %}
+  {% if page.layout == "doc" or page.title == "Home" %}
     {% include header.html %}
+  {% else %}
+    {% include simpleheader.html %}
   {% endif %}
 
   <div class="page-content">
