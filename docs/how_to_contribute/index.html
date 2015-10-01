@@ -61,7 +61,7 @@
 
   <b>Author(s)</b>: Dominic Bennett (100.0%)<br>
   <b>Status</b>: complete |
-  <b>Last edit</b>: Sun Sep 6, 015<br>
+  <b>Last edit</b>: Thu Oct 1, 015<br>
 
 
         </div>
@@ -147,73 +147,99 @@
             <a href="https://github.com/BES-QSIG/docs/blob/master/how_to_contribute.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
         </div>
         <div class="doc-content">
-          <p><em>You will need a GitHub account, if you do not already have one click
-<a href="https://github.com/">here</a> to sign up.</em></p>
+          <h1 id="how-to-contribute">How to contribute</h1>
 
-<h2 id="small-online-edits">Small online edits</h2>
+<p>The FGE website depends on GitHub, to contribute you will need an account. If
+you don&#39;t have one, click <a href="https://github.com/">here</a> to sign up.</p>
 
-<p>To make a small edit follow these steps:</p>
+<p>You can then make changes to the BES-QSIG docs repo, found <a href="https://github.com/BES-QSIG/docs/">here</a>.</p>
 
-<ol>
-<li>At the top of every tutorial (like this one where it says &#39;Click here to
-edit&#39;) there is a link to the document&#39;s source, click it and you will be taken
-to the GitHub website where the document is held.</li>
-<li>At the top of the document&#39;s contents there is an edit button (see below),
-clicking will show a raw text version of the file.</li>
-<li>Make your changes to the file using the Markdown syntax (see this
-<a href="/fge/docs/introduction_to_markdown">tutorial</a>
-to learn Markdown)</li>
-<li>When you&#39;ve finished editing you need to propose the changes, scroll to the
-bottom of the page to find the &#39;Propose file change&#39; section. Simply write a
-short and optional extended description of the changes you made and click
-&#39;Propose file change.&#39;</li>
-<li>And that&#39;s it!</li>
-</ol>
+<p>If you are not familiar with GitHub, then below are walkthroughs (online and offline) of how to make
+changes to existing documents and create new documents in the <code>docs/</code> repository.</p>
 
-<p><strong>The online edit button</strong></p>
+<p>You will need to be familiar with Markdown. See this <a href="http://bes-qsig.github.io/fge/docs/introduction_to_markdown/">guide</a> for a quick tutorial.</p>
 
-<p><img src="https://help.github.com/assets/images/help/repository/edit-file-edit-button.png" alt="edit-button" title="Click here to edit the Markdown file online"></p>
-
-<p>Once your changes have been proposed, they will be reviewed by a &#39;docs-keeper&#39;.
-If accepted, the changes will be added to the original document and will appear
-on the website within one or two days.</p>
-
-<h2 id="large-online-edits">Large online edits</h2>
-
-<p>For more substantial edits which cannot be done in a single sitting:</p>
+<h2 id="contents">Contents</h2>
 
 <ol>
-<li>You will need to &#39;fork&#39; (i.e. copy) the docs repo to your own GitHub account.
-Click the &#39;fork&#39; button on the docs repo (found <a href="https://github.com/BES-QSIG/docs/">here</a>).
-(Note, clicking the edit button automatically does this.)</li>
-<li>Once forked, the docs repo will be copied to a repository in your GitHub
-repositories.</li>
-<li>You can make changes to any files in this repository using the online edit
-button.</li>
-<li>Every change you make can be &#39;saved&#39; by committing your changes to your copy
-of the repository in the &#39;Commit changes&#39; section at the bottom of the page.</li>
-<li>You can add new documents by clicking the + symbol at the top of the
-repository page. Give the new file a name and the extension &#39;.md&#39;.</li>
-<li>Once you&#39;re happy with your changes you need to merge them with the original
-docs repo. Click the green compare button.
-This page will show how your version of the repo differs from the original repo.
-To merge your changes with the original, click &#39;Create pull request&#39; at the top
-of the page.</li>
-<li>And that&#39;s it!</li>
+<li><a href="#Online-editing">Online editing</a></li>
+<li><a href="#offline-editing">Offline editing</a></li>
+<li><a href="#doc-keepers">Doc-Keepers</a></li>
 </ol>
 
-<p><strong>The fork button</strong></p>
+<h1 id="online-editing">Online editing</h1>
 
-<p><img src="https://help.github.com/assets/images/help/repository/fork_button.jpg" alt="fork-button" title="Fork button"></p>
+<h2 id="forking">Forking</h2>
 
-<p><strong>The green compare button</strong></p>
+<p>To prevent spamming, the master copy of the docs repository is protected from
+anyone making changes to it. In order for you to make changes or add new files
+it must first be copied to your own GitHub account, this is called forking in
+GitHub terminology.</p>
 
-<p><img src="https://help.github.com/assets/images/help/pull_requests/pull-request-start-review-button.png" alt="compare-button" title="Compare button"></p>
+<p>To make a copy go to the docs repository url (<a href="https://github.com/BES-QSIG/docs">https://github.com/BES-QSIG/docs</a>)
+and click fork.</p>
 
-<p>Again, your changes will be reviewed by a &#39;docs-keeper&#39; and if accepted will
-appear on the website within one or two days.</p>
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/fork-button.png" alt="fork-button" title="The fork button"></p>
 
-<h2 id="offline-editing">Offline editing</h2>
+<p>You will now find a copy of the repository in your own GitHub account (Profile --&gt; Repositories).</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/forked-repo.png" alt="forked-repository" title="A forked repository"></p>
+
+<p>This is your copy and you can make any changes you want.</p>
+
+<h2 id="making-changes">Making changes</h2>
+
+<p>Selecting one of the documents (e.g. how to contribute) you can make changes to a file directly using GitHub&#39;s edit button.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/edit-button.png" alt="edit-button" title="The edit button"></p>
+
+<p>This will open a text editor where you can modify the Markdown script. In this example I have added a new title and some text.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/editing.png" alt="editing" title="Editing"></p>
+
+<p>We can preview how the Markdown script will be parsed by clicking the preview changes. Handily, GitHub has highlighted where the additions have occurred with green lines.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/previewing-changes.png" alt="previewing-changes" title="Previewing changes"></p>
+
+<p>GitHub requires any changes made to a file to be &#39;committed&#39;. This will update the file with the change you have made and it will record the file&#39;s state before the change. All commits made must have a message describing the changes. In this example, our message is &#39;added new title&#39; and the additional information is &#39;I&#39;ve added a new title and new text.&#39; We will commit these changes directly to our copy of the docs repo (termed here as the &#39;master branch&#39;). (Selecting &#39;Create a new branch for this commit and start a pull request&#39; would skip the pull request section below.)</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/commit.png" alt="commit" title="Committing the change"></p>
+
+<h2 id="adding-new-files">Adding new files</h2>
+
+<p>To create a new file (text based files only) click the + symbol.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/adding-files.png" alt="adding-files" title="Add file"></p>
+
+<p>This will take you to a new editing screen where you write your markdown and preview as before.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/creating-files.png" alt="creating-files" title="Creating file"></p>
+
+<p>Please make you use the .md file extension and include front matter as described in the <a href="http://bes-qsig.github.io/fge/docs/introduction_to_markdown/">introduction to markdown guide</a>.</p>
+
+<h2 id="creating-a-pull-request">Creating a pull request</h2>
+
+<p>Navigating to the main page of our copy of the docs repository we can see how many commits ahead our copy of the repository (called a branch) is compared to the original.
+In this example, it is 1 commit ahead of the BES-QSIG:master. You can have as many commits as you wish, including changes and new files.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/pull-request-1.png" alt="pull-request-1" title="Pull request 1"></p>
+
+<p>Clicking on compare will show us how our branch and the BES-QSIG:master branch differ. Additions are marked in green and deletions are marked in red. In this example, the two branches can be readily merged allowing us to perform a &#39;pull request&#39;.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/pull-request-2.png" alt="pull-request-2" title="Pull request 2"></p>
+
+<p>A &#39;pull request&#39; is used to merge two branches, &quot;please could you pull my branch into your branch&quot;. If we click on &#39;pull request&#39; GitHub will invite us to describe the changes we have made by showing us a similar screen to what we see when we make commits. In this case it is just one commit, but it could be many.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/create-pull-request.png" alt="create-pull-request" title="Opening a pull request"></p>
+
+<p>Clicking &#39;create pull request&#39; will inform the maintainers of
+the docs repository that someone wishes to make a change. This is done by creating a page where maintainers can view your changes and discuss them with you. (These pages are known as &#39;issues&#39;.)</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/opened-pull-request.png" alt="opened-pull-request" title="An open pull request"></p>
+
+<p>If the maintainer is happy with the changes in your branch, they will merge your branch and the original and your changes will be incorporated into the FGE website within a few days.</p>
+
+<h1 id="offline-editing">Offline editing</h1>
 
 <p>For more freedom, it&#39;s best to clone the docs repo to your local computer:</p>
 
@@ -222,11 +248,10 @@ appear on the website within one or two days.</p>
 <li>Clone the repo to your local machine: <code>git clone https://github.com/username/docs.git</code></li>
 <li>On your computer you can edit the files, add new files including image files.</li>
 <li>Commit and push your changes to your version on your Github account.</li>
-<li>For more details on using git, see the <a href="/fge/docs/git_basics">tutorial</a> on git basics.</li>
-<li>Merge your changes by making a pull request!</li>
+<li>Merge your changes by making a pull request as described in the online editing above</li>
 </ol>
 
-<h2 id="become-a-docs-keeper!">Become a docs-keeper!</h2>
+<h1 id="docs-keepers">Docs-Keepers</h1>
 
 <p>To edit files on the repo without the need for pull requests you will need to
 join the docs-keepers&#39; team in the <a href="https://github.com/BES-QSIG">BES-QSIG GitHub account</a>.</p>
@@ -234,7 +259,7 @@ join the docs-keepers&#39; team in the <a href="https://github.com/BES-QSIG">BES
 <p>If you would like to contribute a lot and join the team, please email:
 <a href="mailto:dominic.john.bennett@gmail.com">dominic.john.bennett@gmail.com</a>.</p>
 
-<p>Anyone and everyone welcome!</p>
+<p>All welcome.</p>
 
 <!-- References -->
 
