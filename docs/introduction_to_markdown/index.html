@@ -18,9 +18,9 @@
       // dynamically choose background image
       // convert cover.yml to js variables
       
-      var imgurls = ["https://upload.wikimedia.org/wikipedia/commons/1/18/Flock_of_Seagulls_%28eschipul%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Fog_in_a_forest%2C_Telemark_2.jpg/1280px-Fog_in_a_forest%2C_Telemark_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Winter_forest_%282138216668%29.jpg/1264px-Winter_forest_%282138216668%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Kelp_forest_on_high_profile_reef_P9041231.JPG/1280px-Kelp_forest_on_high_profile_reef_P9041231.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Muskox_animals_arctic_mammals_ovibos_moschatus.jpg/1280px-Muskox_animals_arctic_mammals_ovibos_moschatus.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1280px-Cumulus_Clouds_over_Yellow_Prairie2.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Colorful_Painted_Desert.jpg/1280px-Colorful_Painted_Desert.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Merzouga_desert.jpg/1280px-Merzouga_desert.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Blue_jellyfish.jpg/1280px-Blue_jellyfish.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Flying-birds.jpg/1280px-Flying-birds.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flock_of_gulls_-_various_species.jpg/1280px-Flock_of_gulls_-_various_species.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3d/Beautiful_striking_leaves_wallpaper_top_down_view.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Mother_and_baby_sperm_whale.jpg/1280px-Mother_and_baby_sperm_whale.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg/1280px-Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Seagrass_Halodule_uninervis_%285777808662%29.jpg/1280px-Seagrass_Halodule_uninervis_%285777808662%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Red_Fox_cubs.jpg/1280px-Red_Fox_cubs.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Red_Fox_cubs.jpg/1280px-Red_Fox_cubs.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Moss_closeup.jpg/1280px-Moss_closeup.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG/1280px-MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Three_Rock_Mountain_Southern_Tor.jpg/1280px-Three_Rock_Mountain_Southern_Tor.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Mountain_Goat_Mount_Massive.JPG/1280px-Mountain_Goat_Mount_Massive.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Mountain_Goat_Mount_Massive.JPG/1280px-Mountain_Goat_Mount_Massive.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Coral_Outcrop_Flynn_Reef.jpg/1280px-Coral_Outcrop_Flynn_Reef.jpg"];
+      var imgurls = ["https://upload.wikimedia.org/wikipedia/commons/1/18/Flock_of_Seagulls_%28eschipul%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Fog_in_a_forest%2C_Telemark_2.jpg/1280px-Fog_in_a_forest%2C_Telemark_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Winter_forest_%282138216668%29.jpg/1264px-Winter_forest_%282138216668%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Kelp_forest_on_high_profile_reef_P9041231.JPG/1280px-Kelp_forest_on_high_profile_reef_P9041231.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Muskox_animals_arctic_mammals_ovibos_moschatus.jpg/1280px-Muskox_animals_arctic_mammals_ovibos_moschatus.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1280px-Cumulus_Clouds_over_Yellow_Prairie2.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Colorful_Painted_Desert.jpg/1280px-Colorful_Painted_Desert.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Merzouga_desert.jpg/1280px-Merzouga_desert.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Blue_jellyfish.jpg/1280px-Blue_jellyfish.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Flying-birds.jpg/1280px-Flying-birds.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flock_of_gulls_-_various_species.jpg/1280px-Flock_of_gulls_-_various_species.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3d/Beautiful_striking_leaves_wallpaper_top_down_view.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Mother_and_baby_sperm_whale.jpg/1280px-Mother_and_baby_sperm_whale.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg/1280px-Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Seagrass_Halodule_uninervis_%285777808662%29.jpg/1280px-Seagrass_Halodule_uninervis_%285777808662%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Red_Fox_cubs.jpg/1280px-Red_Fox_cubs.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Alishan_Forest_Stump_Moss.JPG/1280px-Alishan_Forest_Stump_Moss.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Moss_closeup.jpg/1280px-Moss_closeup.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG/1280px-MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Three_Rock_Mountain_Southern_Tor.jpg/1280px-Three_Rock_Mountain_Southern_Tor.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Mountain_Goat_Mount_Massive.JPG/1280px-Mountain_Goat_Mount_Massive.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/School_of_Pterocaesio_chrysozona_in_Papua_New_Guinea_1.jpg/1280px-School_of_Pterocaesio_chrysozona_in_Papua_New_Guinea_1.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Coral_Outcrop_Flynn_Reef.jpg/1280px-Coral_Outcrop_Flynn_Reef.jpg"];
       
-      var crediturls = ["https://commons.wikimedia.org/wiki/File:Flock_of_Seagulls_%28eschipul%29.jpg", "https://commons.wikimedia.org/wiki/File:Fog_in_a_forest,_Telemark_2.jpg", "https://commons.wikimedia.org/wiki/File:Winter_forest_%282138216668%29.jpg", "https://commons.wikimedia.org/wiki/File:Kelp_forest_on_high_profile_reef_P9041231.JPG", "https://commons.wikimedia.org/wiki/File:Muskox_animals_arctic_mammals_ovibos_moschatus.jpg", "https://commons.wikimedia.org/wiki/File:Cumulus_Clouds_over_Yellow_Prairie2.jpg", "https://commons.wikimedia.org/wiki/File:Colorful_Painted_Desert.jpg", "https://commons.wikimedia.org/wiki/File:Merzouga_desert.jpg", "https://commons.wikimedia.org/wiki/File:Blue_jellyfish.jpg", "https://commons.wikimedia.org/wiki/File:Flying-birds.jpg", "https://commons.wikimedia.org/wiki/File:Flock_of_gulls_-_various_species.jpg", "https://commons.wikimedia.org/wiki/File:Beautiful_striking_leaves_wallpaper_top_down_view.JPG", "https://commons.wikimedia.org/wiki/File:Mother_and_baby_sperm_whale.jpg", "https://commons.wikimedia.org/wiki/File:Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg", "https://commons.wikimedia.org/wiki/File:Seagrass_Halodule_uninervis_%285777808662%29.jpg", "https://commons.wikimedia.org/wiki/File:Red_Fox_cubs.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Alishan_Forest_Stump_Moss.JPG/1280px-Alishan_Forest_Stump_Moss.JPG", "https://commons.wikimedia.org/wiki/File:Moss_closeup.jpg", "https://commons.wikimedia.org/wiki/File:MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG", "https://commons.wikimedia.org/wiki/File:Three_Rock_Mountain_Southern_Tor.jpg", "https://commons.wikimedia.org/wiki/File:Mountain_Goat_Mount_Massive.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/School_of_Pterocaesio_chrysozona_in_Papua_New_Guinea_1.jpg/1280px-School_of_Pterocaesio_chrysozona_in_Papua_New_Guinea_1.jpg", "https://commons.wikimedia.org/wiki/File:Coral_Outcrop_Flynn_Reef.jpg"];
+      var crediturls = ["https://commons.wikimedia.org/wiki/File:Flock_of_Seagulls_%28eschipul%29.jpg", "https://commons.wikimedia.org/wiki/File:Fog_in_a_forest,_Telemark_2.jpg", "https://commons.wikimedia.org/wiki/File:Winter_forest_%282138216668%29.jpg", "https://commons.wikimedia.org/wiki/File:Kelp_forest_on_high_profile_reef_P9041231.JPG", "https://commons.wikimedia.org/wiki/File:Muskox_animals_arctic_mammals_ovibos_moschatus.jpg", "https://commons.wikimedia.org/wiki/File:Cumulus_Clouds_over_Yellow_Prairie2.jpg", "https://commons.wikimedia.org/wiki/File:Colorful_Painted_Desert.jpg", "https://commons.wikimedia.org/wiki/File:Merzouga_desert.jpg", "https://commons.wikimedia.org/wiki/File:Blue_jellyfish.jpg", "https://commons.wikimedia.org/wiki/File:Flying-birds.jpg", "https://commons.wikimedia.org/wiki/File:Flock_of_gulls_-_various_species.jpg", "https://commons.wikimedia.org/wiki/File:Beautiful_striking_leaves_wallpaper_top_down_view.JPG", "https://commons.wikimedia.org/wiki/File:Mother_and_baby_sperm_whale.jpg", "https://commons.wikimedia.org/wiki/File:Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg", "https://commons.wikimedia.org/wiki/File:Seagrass_Halodule_uninervis_%285777808662%29.jpg", "https://commons.wikimedia.org/wiki/File:Red_Fox_cubs.jpg", "https://commons.wikimedia.org/wiki/File:Alishan_Forest_Stump_Moss.JPG", "https://commons.wikimedia.org/wiki/File:Moss_closeup.jpg", "https://commons.wikimedia.org/wiki/File:MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG", "https://commons.wikimedia.org/wiki/File:Three_Rock_Mountain_Southern_Tor.jpg", "https://commons.wikimedia.org/wiki/File:Mountain_Goat_Mount_Massive.JPG", "https://commons.wikimedia.org/wiki/File:School_of_Pterocaesio_chrysozona_in_Papua_New_Guinea_1.jpg", "https://commons.wikimedia.org/wiki/File:Coral_Outcrop_Flynn_Reef.jpg"];
       
       var titles = ["Running with the seagulls", "Fog in a forest", "Winter forest", "Kelp forest on high profile reef", "Muskox animals arctic mammals Ovibos moschatus", "Cumulus clouds towering over yellow prairie", "HDR of Painted Desert in Arizona", "Desert de Sable à Merzouga", "Happy Jellyfish", "Columba livia volant, prise au Maroc, Casablanca", "Mixed flock of Larus argentatus and Larus canus.", "Beautiful striking leaves", "A mother sperm whale and her calf off the coast of Mauritius", "Mother sea otter with rare twin baby pups", "Seagrass Halodule uninervis", "Red Fox cubs", "Alishan Forest Stump Moss", "Moss closeup", "Soay Sheep Urban Grazing", "Three Rock Mountain Southern Tor", "Mountain Goat Mount Massive", "School of Goldband Fusilier", "Coral Outcrop Flynn Reef"];
       
@@ -61,7 +61,7 @@
 
   <b>Author(s)</b>: Dominic Bennett (100.0%)<br>
   <b>Status</b>: complete |
-  <b>Last edit</b>: Sun Sep 6, 015<br>
+  <b>Last edit</b>: Thu Oct 1, 015<br>
 
 
         </div>
@@ -147,81 +147,75 @@
             <a href="https://github.com/BES-QSIG/docs/blob/master/introduction_to_markdown.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
         </div>
         <div class="doc-content">
-          <p>This tutorial explains the Markdown syntax for tutorials hosted on this
-website. Although, Markdown comes in a variety of flavours -- most ecologists
-would be familiar with R markdown -- they all have very similar syntaxes with
-many of it being interchangeable. On this website we use GitHub flavoured
-markdown.</p>
+          <h1 id="introduction-to-markdown">Introduction to Markdown</h1>
 
-<h2 id="extension">Extension</h2>
+<p>Markdown is a <a href="https://en.wikipedia.org/wiki/Markup_language">markup language</a>
+like HTML or LATEX. It is a text document that specifies not only the text but also the format. Markdown is designed to be as simple as
+possible.</p>
 
-<p>Always save your markdown files: <code>[name_file].md</code></p>
+<p>Markdown documents can be made and edited with basic text editors (e.g.
+notepad, wordpad, textedit) or online with GitHub.</p>
 
-<h2 id="metadata">Metadata</h2>
+<p>For this website we use a version of Markdown called GitHub Flavoured Markdown.</p>
 
-<p>At the very top of every document metadata is provided to tell the website how
-the page should be set-up, it&#39;s called <em>front-matter</em>. Don&#39;t worry about how
-it works, all that is required is to provide layout, status, title and
-link parameters. So for this document the parameters are:</p>
+<h2 id="contents">Contents</h2>
+
+<ol>
+<li><a href="#formatting-your-document">Formatting your document</a></li>
+<li><a href="#markdown-features">Markdown features</a></li>
+<li><a href="#advanced-and-further-reading">Advanced and further reading</a></li>
+</ol>
+
+<h1 id="formatting-your-document">Formatting your document</h1>
+
+<p>Please save your documents with the .md extension e.g. <code>[name_file].md</code></p>
+
+<p>Please provide front matter at the top of the document:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">---
 layout: doc
 status: complete
 title: Introduction to Markdown
-permalink: /docs/introduction_to_markdown/
 ---
 </code></pre></div>
-<p>Simply copy this and place it at the top of any document you create. <code>layout</code>
-must always be doc, it tells the website how to parse the file. <code>title</code>
-specifies the name of the page that will appear in users&#39; browsers.
-<code>permalink</code> is always <code>/docs/[name_of_file]</code>, with the name of the file ignoring
-the extension. <code>status</code> is a free text field, you could write things
-like &#39;in development&#39; or &#39;complete&#39; to let your readers know how likely the
-guide is to change or whether you&#39;re looking for help.</p>
+<p>This tells the website how to interpret the document.</p>
+
+<ul>
+<li><code>layout</code>: type of document (always doc)</li>
+<li><code>status</code>: e.g. complete, incomplete, in progress (free text)</li>
+<li><code>title</code>: Introduction to ..., How to .... (free text)</li>
+</ul>
+
+<h1 id="markdown-features">Markdown features</h1>
+
+<h2 id="emphasis">Emphasis</h2>
+
+<p>Use * and ** to italicise and embolden text, e.g.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">`*I am italicised* while **I am emboldened**`
+</code></pre></div>
+<p>Produces:</p>
+
+<p><em>I am italicised</em> while <strong>I am emboldened</strong></p>
 
 <h2 id="headings">Headings</h2>
 
-<p>Headings in Markdown are denoted using <code>#</code> symbol, subheadings are specified by
-adding an extra <code>#</code>. So for example, this Markdown code:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># Heading 1
-Words words words ....
+<p>Use the <code>#</code> to create headings. Each subheading is specified with an additional
+<code>#</code>. e.g.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">### Subheading 3
 
-## Subheading 1
-Words words words ....
-
-### Subheading 2
-Words words words ....
+#### Subheading 4
 </code></pre></div>
-<p>Produces this:</p>
+<p>Produces:</p>
 
-<h1 id="heading-1">Heading 1</h1>
+<h3 id="subheading-3">Subheading 3</h3>
 
-<p>Words words words ....</p>
-
-<h2 id="subheading-1">Subheading 1</h2>
-
-<p>Words words words ....</p>
-
-<h3 id="subheading-2">Subheading 2</h3>
-
-<p>Words words words ....</p>
-
-<h2 id="asides">Asides</h2>
-
-<p>Use the &gt; symbol to make text into an aside. For example:</p>
-
-<p><code>&gt;Hello! I&#39;m being self-referential!</code></p>
-
-<p>.... produces:</p>
-
-<blockquote>
-<p>Hello! I&#39;m being self-referential!</p>
-</blockquote>
+<h4 id="subheading-4">Subheading 4</h4>
 
 <h2 id="lists">Lists</h2>
 
 <p>Bullet point lists are created with <code>*</code>, numbered lists with numbers. e.g.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">* item 1
 * item 2
+
 
 1. item 1
 2. item 2
@@ -240,53 +234,37 @@ Words words words ....
 
 <h2 id="references">References</h2>
 
-<p>To add URL links use this syntax:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[hyperlinked text](url/to/link)
+<p>To add URL links use this syntax <code>[hyperlinked text](url/to/link)</code> e.g.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">*Louis XIV, also known as the Sun King, was king of France from 1643 to
+1715 according to his [Wikipedia page](https://en.wikipedia.org/wiki/Louis_XIV_of_France)*
 </code></pre></div>
-<p>To link between different documents on the website use the <code>site.baseurl</code>
-command within curly brackets:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[hyperlinked text]({{ site.baseurl }}/docs/name_of_page.md)
-</code></pre></div>
-<p>To add images, the syntax is very similar:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">![name_of_image](url/link/to/image &quot;Hover description of image&quot;)
-</code></pre></div>
-<p>Instead of linking to images elsewhere on the internet, you can link to images
-uploaded to the BES-QSIG&#39;s docs repo. All images are kept in the <code>img/</code> folder.
-Instead of providing a URL, you can use this command:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">{{ site.imgurl }}/name_of_file
-</code></pre></div>
-<p>To make your life easier, it&#39;s best to create references to images rather than
-have chunks of URL in the middle of your text. For example, at the bottom of
-this .md file I&#39;ve created a reference to an image of my cat like so:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!-- References --&gt;
-[cat]: {{ site.imgurl }}/mara_cat.jpg &quot;This is my cat, she&#39;s called Mara.&quot;
-</code></pre></div>
-<p>Note <code>&lt;!--</code> and <code>--&gt;</code> indicate the start and end of comments. To use this
-reference in the text I type:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">![cat][cat]
-</code></pre></div>
-<p>Where the second <code>[cat]</code> is the named reference to the URL link I provide at the
-bottom of the page. So using it gives ....</p>
+<p>Produces:</p>
 
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/mara_cat.jpg" alt="cat" title="This is my cat, she&#39;s called Mara."></p>
+<p><em>Louis XIV, also known as the Sun King, was king of France from 1643 to
+1715 according to his <a href="https://en.wikipedia.org/wiki/Louis_XIV_of_France">Wikipedia page</a></em></p>
+
+<h2 id="images">Images</h2>
+
+<p>To add images, the syntax is very similar <code>![name_of_image](url/link/to/image &quot;Hover description of image&quot;)</code>.
+e.g.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">`![cat](https://raw.githubusercontent.com/BES-QSIG/docs/master/img/mara_cat.jpg &quot;This cat is called Mara&quot;)`
+</code></pre></div>
+<p>Produces:</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/mara_cat.jpg" alt="cat" title="This cat is called Mara"></p>
+
+<h2 id="code-snippets">Code snippets</h2>
+
+<p>To insert code inline use ` e.g.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  This is text and `this is code`
+</code></pre></div>
+<p>Produces:</p>
+
+<p>This is text and <code>this is code</code></p>
 
 <h2 id="code-blocks">Code blocks</h2>
 
-<p>This is probably what gives Markdown the edge. To insert code inline use `.
-I use this to highlight <code>folders/</code>, <code>variables</code>, <code>functions</code> etc. if I refer to
-them in-text. To insert blocks of text, indent the paragraph as I have been
-doing above for Markdown examples, e.g.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-anim id est laborum.
-</code></pre></div>
-<p>For syntax code colouring, the code block is specified using three ` and the
-name of the language at the beginning of the code block and three `  at the
-end. For example, this block of <code>R</code> code ....</p>
+<p>Use ``` to create syntax highlighted code blocks e.g.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">```R
 greeting &lt;- &#39;Hello world!&#39;
 for (letter in greeting) {
@@ -295,14 +273,14 @@ for (letter in greeting) {
 cat (greeting)
 ```
 </code></pre></div>
-<p>.... produces:</p>
+<p>Produces:</p>
 <div class="highlight"><pre><code class="language-R" data-lang="R">greeting <span class="o">&lt;-</span> <span class="s">&#39;Hello world!&#39;</span>
 <span class="kr">for</span> <span class="p">(</span>letter <span class="kr">in</span> greeting<span class="p">)</span> <span class="p">{</span>
     cat <span class="p">(</span>letter<span class="p">,</span> <span class="s">&#39;\n&#39;</span><span class="p">)</span>
 <span class="p">}</span>
 cat <span class="p">(</span>greeting<span class="p">)</span>
 </code></pre></div>
-<p>Other languages are also possible, such as for <code>python</code>:</p>
+<p>Other languages are also possible e.g.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">```python
 greeting = &#39;Hello world!&#39;
 for letter in greeting:
@@ -326,7 +304,7 @@ new lines to separate rows and <code>-</code> to mark headers. For example:</p>
 |row1col1|row1col2|
 |row2col1|row2col2|
 </code></pre></div>
-<p>.... produces:</p>
+<p>Produces:</p>
 
 <table><thead>
 <tr>
@@ -343,6 +321,20 @@ new lines to separate rows and <code>-</code> to mark headers. For example:</p>
 <td>row2col2</td>
 </tr>
 </tbody></table>
+
+<h2 id="asides">Asides</h2>
+
+<p>Use the &gt; symbol to make text into an aside e.g.</p>
+
+<p><code>&gt;Hello! Hello! Hello!</code></p>
+
+<p>Produces:</p>
+
+<blockquote>
+<p>Hello! Hello! Hello!</p>
+</blockquote>
+
+<h1 id="advanced-and-further-reading">Advanced and further reading</h1>
 
 <h2 id="previewing">Previewing</h2>
 
@@ -365,12 +357,12 @@ highlighting and previewing:</p>
 <h2 id="converters">Converters</h2>
 
 <p>If you already have a guide written in a different markup language (such as
-  HTML, Latex or even pdf!) you can use a converter to transform it into
+  HTML, Latex or even pdf) you can use a converter to transform it into
 markdown. See <a href="http://pandoc.org/README.html">pandocs</a> for more details.</p>
 
 <h2 id="further-reading">Further reading</h2>
 
-<p>When embarking on writing a tutorial, feel free to copy the markdown of other
+<p>When writing a tutorial, feel free to copy the markdown of other
 files in the <code>docs/</code> repo. Click on the &#39;Improve page&#39; pencil at the top to
 see the page in GitHub and click &#39;raw&#39; to see the text script, unparsed.</p>
 
@@ -386,8 +378,6 @@ website <code>css</code> for any custom classes.</p>
 <li><a href="http://daringfireball.net/projects/markdown/syntax">Official Markdown Syntax</a></li>
 <li><a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Markdown Syntax</a></li>
 </ul>
-
-<!-- References -->
 
         </div>
       </div>
