@@ -291,12 +291,10 @@ data <span class="o">=</span> <span class="kt">list</span><span class="p">(</spa
 <div class="highlight"><pre><code class="language-R" data-lang="R">bugs.summary <span class="o">&lt;-</span> bugs.out<span class="o">$</span><span class="kp">summary</span>
 bugs.DIC <span class="o">&lt;-</span> bugs.out<span class="o">$</span>DIC
 </code></pre></div>
-<p>We can also plot the output
-<code>R
-plot(bugs.out) # gives a summary plot of coefficients and credible intervals
-mcmcplot(bugs.out) # opens up a new window with a set of plots to evaluate mcmc chain convergence
-</code></p>
-
+<p>We can also plot the output</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">plot<span class="p">(</span>bugs.out<span class="p">)</span> <span class="c1"># gives a summary plot of coefficients and credible intervals</span>
+mcmcplot<span class="p">(</span>bugs.out<span class="p">)</span> <span class="c1"># opens up a new window with a set of plots to evaluate mcmc chain convergence</span>
+</code></pre></div>
 <p>We can see that the model has converged well and comparison of the mean values for alpha and beta with our <code>lm</code> model output show very similar results.</p>
 
 <p><strong>Success! Time for a cup of tea</strong> </p>
