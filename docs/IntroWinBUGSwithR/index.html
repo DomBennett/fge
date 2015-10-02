@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FGE &middot; Introduction to WinBUGs with R</title>
+  <meta name="description" content="Crowd-sourced notes on all things<br>computational and quantitative in ecological research">
+  <link rel="stylesheet" href="/fge/css/main.css">
+  <link rel="canonical" href="http://bes-qsig.github.io/fge/docs/IntroWinBUGSwithR/">
+  <link rel="alternate" type="application/rss+xml" title="Field Guides for Ecologists" href="http://bes-qsig.github.io/fge/feed.xml" />
+  <link rel="icon" type="image/x-icon" href="/fge/favicon.ico">
+  <script type="text/javascript" src="/fge/js/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" src="/fge/js/jquery.stellar.min.js"></script>
+  <script>
+    $(document).on('ready', function(){
+      // dynamically choose background image
+      // convert cover.yml to js variables
+      
+      var imgurls = ["https://upload.wikimedia.org/wikipedia/commons/1/18/Flock_of_Seagulls_%28eschipul%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Fog_in_a_forest%2C_Telemark_2.jpg/1280px-Fog_in_a_forest%2C_Telemark_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Winter_forest_%282138216668%29.jpg/1264px-Winter_forest_%282138216668%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Kelp_forest_on_high_profile_reef_P9041231.JPG/1280px-Kelp_forest_on_high_profile_reef_P9041231.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Muskox_animals_arctic_mammals_ovibos_moschatus.jpg/1280px-Muskox_animals_arctic_mammals_ovibos_moschatus.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg/1280px-Cumulus_Clouds_over_Yellow_Prairie2.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Colorful_Painted_Desert.jpg/1280px-Colorful_Painted_Desert.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Merzouga_desert.jpg/1280px-Merzouga_desert.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Blue_jellyfish.jpg/1280px-Blue_jellyfish.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Flying-birds.jpg/1280px-Flying-birds.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flock_of_gulls_-_various_species.jpg/1280px-Flock_of_gulls_-_various_species.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3d/Beautiful_striking_leaves_wallpaper_top_down_view.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Mother_and_baby_sperm_whale.jpg/1280px-Mother_and_baby_sperm_whale.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg/1280px-Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Seagrass_Halodule_uninervis_%285777808662%29.jpg/1280px-Seagrass_Halodule_uninervis_%285777808662%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Red_Fox_cubs.jpg/1280px-Red_Fox_cubs.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Alishan_Forest_Stump_Moss.JPG/1280px-Alishan_Forest_Stump_Moss.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Moss_closeup.jpg/1280px-Moss_closeup.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG/1280px-MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Three_Rock_Mountain_Southern_Tor.jpg/1280px-Three_Rock_Mountain_Southern_Tor.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Mountain_Goat_Mount_Massive.JPG/1280px-Mountain_Goat_Mount_Massive.JPG", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/School_of_Pterocaesio_chrysozona_in_Papua_New_Guinea_1.jpg/1280px-School_of_Pterocaesio_chrysozona_in_Papua_New_Guinea_1.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Coral_Outcrop_Flynn_Reef.jpg/1280px-Coral_Outcrop_Flynn_Reef.jpg"];
+      
+      var crediturls = ["https://commons.wikimedia.org/wiki/File:Flock_of_Seagulls_%28eschipul%29.jpg", "https://commons.wikimedia.org/wiki/File:Fog_in_a_forest,_Telemark_2.jpg", "https://commons.wikimedia.org/wiki/File:Winter_forest_%282138216668%29.jpg", "https://commons.wikimedia.org/wiki/File:Kelp_forest_on_high_profile_reef_P9041231.JPG", "https://commons.wikimedia.org/wiki/File:Muskox_animals_arctic_mammals_ovibos_moschatus.jpg", "https://commons.wikimedia.org/wiki/File:Cumulus_Clouds_over_Yellow_Prairie2.jpg", "https://commons.wikimedia.org/wiki/File:Colorful_Painted_Desert.jpg", "https://commons.wikimedia.org/wiki/File:Merzouga_desert.jpg", "https://commons.wikimedia.org/wiki/File:Blue_jellyfish.jpg", "https://commons.wikimedia.org/wiki/File:Flying-birds.jpg", "https://commons.wikimedia.org/wiki/File:Flock_of_gulls_-_various_species.jpg", "https://commons.wikimedia.org/wiki/File:Beautiful_striking_leaves_wallpaper_top_down_view.JPG", "https://commons.wikimedia.org/wiki/File:Mother_and_baby_sperm_whale.jpg", "https://commons.wikimedia.org/wiki/File:Mother_sea_otter_with_rare_twin_baby_pups_%289137174915%29.jpg", "https://commons.wikimedia.org/wiki/File:Seagrass_Halodule_uninervis_%285777808662%29.jpg", "https://commons.wikimedia.org/wiki/File:Red_Fox_cubs.jpg", "https://commons.wikimedia.org/wiki/File:Alishan_Forest_Stump_Moss.JPG", "https://commons.wikimedia.org/wiki/File:Moss_closeup.jpg", "https://commons.wikimedia.org/wiki/File:MoutonSoaySoaySheepUrbanGrazing2012LilleLamiotF_08.JPG", "https://commons.wikimedia.org/wiki/File:Three_Rock_Mountain_Southern_Tor.jpg", "https://commons.wikimedia.org/wiki/File:Mountain_Goat_Mount_Massive.JPG", "https://commons.wikimedia.org/wiki/File:School_of_Pterocaesio_chrysozona_in_Papua_New_Guinea_1.jpg", "https://commons.wikimedia.org/wiki/File:Coral_Outcrop_Flynn_Reef.jpg"];
+      
+      var titles = ["Running with the seagulls", "Fog in a forest", "Winter forest", "Kelp forest on high profile reef", "Muskox animals arctic mammals Ovibos moschatus", "Cumulus clouds towering over yellow prairie", "HDR of Painted Desert in Arizona", "Desert de Sable à Merzouga", "Happy Jellyfish", "Columba livia volant, prise au Maroc, Casablanca", "Mixed flock of Larus argentatus and Larus canus.", "Beautiful striking leaves", "A mother sperm whale and her calf off the coast of Mauritius", "Mother sea otter with rare twin baby pups", "Seagrass Halodule uninervis", "Red Fox cubs", "Alishan Forest Stump Moss", "Moss closeup", "Soay Sheep Urban Grazing", "Three Rock Mountain Southern Tor", "Mountain Goat Mount Massive", "School of Goldband Fusilier", "Coral Outcrop Flynn Reef"];
+      
+      var authors = ["Ed Schipul", "Ernst Vikne", "Randi Hausken", "Peter Southwood", "U.S. Fish and Wildlife Service", "Wing-Chi Poon and Kjetil r", "katsrcool", "j-b.d", "ProjectManhattan", "Nasser Akabab", "John Haslam", "Mihir.rao94", "Gabriel Barathieu", "Mike Baird", "Paul Asman and Jill Lenoble", "Mike Baird", "(WT-shared) Jpatokal", "KirinX", "Lamiot", "Joe King", "Darklich14", "Brocken Inaglory", "Toby Hudson"];
+      var rand = Math.floor(Math.random()*imgurls.length);
+      $(".site-header").css({'background-image': 'url(' + imgurls[rand] + ')'});
+      $('#pphotocredit').html("<i>Cover photo credit</i>:<br> <a href=" + crediturls[rand] + ">" + titles[rand] + " (by " + authors[rand] + ")</a>");
+    })
+  </script>
+  <script>
+    $(document).ready(function(){
+  	   $(window).bind('scroll', function() {
+  	      var distance = $('.site-header').css('height');
+          var distance = Number(distance.replace('px', ''));
+          //console.log(distance);
+          if ($(window).scrollTop() > distance) {
+           $('.site-nav-bar').addClass('scrolled');
+          }
+          else {
+           $('.site-nav-bar').removeClass('scrolled');
+          }
+  		});
+  	});
+  </script>
+</head>
+
+
+<body>
+  
+    <header>
+    <div class="site-header grid hide-on-mobiles" data-stellar-background-ratio="0.1">
+        <div class='site-title'>
+            
+  <h1>
+    Introduction to WinBUGs with R
+  </h1>
+
+
+  <b>Author(s)</b>: susanjarvis501 (100.0%)<br>
+  <b>Status</b>: complete |
+  <b>Last edit</b>: Fri Oct 2, 015<br>
+
+
+        </div>
+    </div>
+</header>
+
+<script>
+    $.stellar({
+        horizontalScrolling: false,
+        responsive: true,
+        positionProperty: 'transform'
+    });
+</script>
+
+  
+  <div class="grid site-nav-bar">
+
+  <div id='site-nav-unit' class="unit two-thirds align-right">
+    <nav class="site-nav">
+        <a href="#" class="menu-icon">
+            <svg viewBox="0 0 18 15">
+                <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+        </a>
+
+      <div class="trigger">
+          
+              <a class="page-link"
+                 href="/fge/">
+                  Home
+              </a>
+          
+              <a class="page-link"
+                 href="/fge/guides">
+                  Index
+              </a>
+          
+              <a class="page-link"
+                 href="/fge/news">
+                  News
+              </a>
+          
+              <a class="page-link"
+                 href="/fge/contributors">
+                  Contributors
+              </a>
+          
+          <a class="page-link" href="https://github.com/BES-QSIG">
+              GitHub
+          </a>
+      </div>
+
+    </nav>
+  </div>
+
+  <div class="unit one-third align-right hide-on-mobiles" style="padding:0">
+    <script>
+      (function() {
+        var cx = '007667397270974397171:ytfqeo626by';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            '//cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+    <gcse:search></gcse:search>
+  </div>
+</div>
+
+
+  <div class="page-content">
+    <div class="wrapper">
+        <section class="docs">
+    <div class="grid">
+
+      <div class="unit four-fifths">
+        <div class="edit-message">
+            <a href="https://github.com/BES-QSIG/docs/blob/master/IntroWinBUGSwithR.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
+        </div>
+        <div class="doc-content">
+          <p>WinBUGS is a piece of software developed for Bayesian statistical analysis using Markov Chain Monte Carlo (MCMC). It is useful because it allows you to specify models with much more flexibility than many R packages, but it is more computationally expensive. WinBUGS can be run through R but requires you to write your model in BUGS code, which is saved to a text file then read in when you run the model.Related Bayesian statistics software (OpenBUGS, JAGS) use similar code to WinBUGS. WinBUGS can be downloaded <a href="http://www.mrc-bsu.cam.ac.uk/software/bugs/">here</a>.</p>
+
+<h3 id="key-features-of-winbugs-code">Key features of WinBUGS code</h3>
+
+<p>When writing models for WinBUGS there are some key characteristics of WinBUGS code to bear in mind:</p>
+
+<ol>
+<li>Models are always written in two parts, one for the distribution of the random part of the model and one with the linear predictor function</li>
+<li>Vectorisation is not supported so models must loop through observations</li>
+<li>It is important to ensure correct indexing at each step (e.g. <code>mu[i]</code> not <code>mu</code>)</li>
+<li>Variances are expressed as precision (1/variance) normally written as <code>tau</code></li>
+<li>Calculations must be carried out on separate lines and are not always the same as R e.g. <code>pow(x,2)</code> is used instead of <code>x^2</code>. If you want to carry out a calculation on a whole vector it must go in a loop.</li>
+<li>The order of statements is not important i.e. you can use a variable before you define it</li>
+<li>Stochastic nodes always have twiddles <code>~</code>, deterministic nodes always have arrows <code>&lt;-</code></li>
+</ol>
+
+<p>To demonstrate these differences we will run a simple linear model using both standard R functions (<code>lm</code>) and WinBUGS.</p>
+
+<h2 id="setting-up-the-workspace">Setting up the workspace</h2>
+
+<p>The <code>R2WinBUGS</code> package allows WinBUGS to be run from R. <code>mcmcplots</code> produces some nice plots of the mcmc chain output.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R"><span class="c1">#Import required packages</span>
+<span class="kn">library</span><span class="p">(</span>R2WinBUGS<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>mcmcplots<span class="p">)</span>
+</code></pre></div>
+<h2 id="data-preparation">Data preparation</h2>
+
+<p>In this example we are going to use the inbuilt Iris data. In this case we are going to test whether sepal length is related to petal length.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">data<span class="p">(</span>iris<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>iris<span class="p">)</span>
+<span class="c1">#Plot the raw data</span>
+plot<span class="p">(</span>iris<span class="o">$</span>Sepal.Length <span class="o">~</span> iris<span class="o">$</span>Petal.Length<span class="p">,</span> xlab <span class="o">=</span> <span class="s">&quot;Petal length&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;Sepal length&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>WinBUGS cannot interpret dataframes and therefore it requires each variable to be defined as a separate object.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">sepal <span class="o">&lt;-</span> iris<span class="o">$</span>Sepal.Length
+petal <span class="o">&lt;-</span> iris<span class="o">$</span>Petal.Length
+</code></pre></div>
+<p>Often you will want to standardise and centre your data at this stage. WinBUGS doesn&#39;t work very well if the variables in your model are on different scales so it is usually a good idea to do this at the same time as defining each variable in the workspace e.g. <code>sepal &lt;- as.numeric(scale(iris$Sepal.Length))</code>. However, because our example data is on very similar scales we can skip this step.</p>
+
+<h2 id="set-up-the-model">Set up the model</h2>
+
+<p>If we are using the standard R function <code>lm</code> we can now run our model (for now we are ignoring other aspects of the dataset e.g. the Species column):</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">lm1 <span class="o">&lt;-</span> lm<span class="p">(</span>sepal <span class="o">~</span> petal<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm1<span class="p">)</span>
+</code></pre></div>
+<p>In WinBUGS the code is more complicated as we need to explicitly state the distribution of the model as well as providing priors for each term to be estimated. In our model we are going to assume we have no prior information about the relationship between sepal and petal length and use an uninformative prior for all of our parameters.</p>
+
+<p>It is usually helpful to organise the code into two sections, one describing the model likelihood function and one defining the priors to use. All the code is parceled into a text file.</p>
+
+<p>The first two lines set up the text file (mod1.txt) and begin concatenating the lines to be printed to the file.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R"><span class="kp">sink</span><span class="p">(</span><span class="s">&quot;mod1.txt&quot;</span><span class="p">)</span>        
+<span class="kp">cat</span><span class="p">(</span><span class="s">&quot;</span>
+<span class="c1">#...</span>
+</code></pre></div>
+<p>The next section sets up the likelihood function of our model. This is similar to the usage of lm except that the model is now specified in two parts: one to define the distribution the response variable comes from and one to show how the mean of that distribution is defined. </p>
+
+<p>In this case our data come from a normal distribution with mean <code>mu</code> and precision <code>tau</code> where the mean of the distribution <code>mu</code> is defined by an intercept <code>alpha</code> and a slope <code>beta</code> describing the relationship with petal length.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R"><span class="c1">#...</span>
+MODEL LR1 <span class="p">{</span>
+    <span class="kr">for</span><span class="p">(</span>i <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>N<span class="p">)</span> <span class="p">{</span>
+    sepal<span class="p">[</span>i<span class="p">]</span> <span class="o">~</span> dnorm<span class="p">(</span>mu<span class="p">[</span>i<span class="p">],</span> tau<span class="p">)</span>
+      mu<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> alpha <span class="o">+</span> <span class="kp">beta</span><span class="o">*</span>petal<span class="p">[</span>i<span class="p">]</span>
+<span class="p">}</span>
+<span class="c1">#...</span>
+</code></pre></div>
+<p>The next step is to define the priors in the model. Priors are needed for all estimated variables (in this model <code>tau</code>, <code>alpha</code> and <code>beta</code>). As mentioned above, in this example we assume we have no prior information to use so construct uninformative (vague) priors.</p>
+
+<p>For the intercept and slope variables we assume they come from a normal distribution with mean of 0 and small precision (wide variance). </p>
+
+<p>For the precision variable of our normal distribution <code>tau</code> we need to use a prior that constrains it to be positive (negative precision is not possible). To do this we generally convert to variance <code>sigma</code> and give <code>sigma</code> a uniform prior, in this case between 0 and 10. This means that we assume the variance is equally likely to be any value between 0 and 10.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R"><span class="c1">#...</span>
+alpha <span class="o">~</span> dnorm<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.001</span><span class="p">)</span>
+beta <span class="o">~</span> dnorm<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.001</span><span class="p">)</span>
+
+tau <span class="o">&lt;-</span> pow<span class="p">(</span>sigma<span class="p">,</span> <span class="m">-2</span><span class="p">)</span>
+sigma <span class="o">~</span> dunif<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">)</span> 
+<span class="c1">#...</span>
+</code></pre></div>
+<p>This marks the end of the model so we can finish concatenating the code and sink the model to the text file.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R"><span class="c1">#...</span>
+<span class="p">}</span>
+<span class="s">&quot;</span><span class="err">, fill = TRUE)</span>
+<span class="kp">sink</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="define-data,-parameters,-initials-and-settings">Define data, parameters, initials and settings</h2>
+
+<p>Now that we have written the code for our model we need to prepare the remaining objects required to run the BUGS model. These are:</p>
+
+<ol>
+<li>The data we want to pass to the model e.g. our <code>sepal</code> and <code>petal</code> objects</li>
+<li>The parameters we want the model to report on</li>
+<li>Initial values for each parameter</li>
+<li>The MCMC settings we want to use</li>
+</ol>
+
+<h3 id="data">Data</h3>
+
+<p>All the variables used in the model need to be provided in a named list. Note this includes the number of observations to loop through <code>N</code>; it is better to define N here as limited calculations are supported by WinBUGS</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">N <span class="o">=</span> <span class="kp">length</span><span class="p">(</span>sepal<span class="p">)</span>
+data <span class="o">=</span> <span class="kt">list</span><span class="p">(</span><span class="s">&quot;N&quot;</span><span class="p">,</span><span class="s">&quot;sepal&quot;</span><span class="p">,</span><span class="s">&quot;petal&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="parameters">Parameters</h3>
+
+<p>You also need to define which parameters you want to report on, here we ask WinBUGS to report the intercept and slope (but not <code>tau</code>). This flexibility is useful in a large model where you might be estimating tens of parameters without needing to report on them all.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">params <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span><span class="p">,</span> <span class="s">&quot;beta&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="initial-values">Initial values</h3>
+
+<p>It is also a good idea to define starting values for the MCMC chains of each parameter. This is because although WinBUGS can choose these for you, the choice can sometimes be crucial to model performance so it is a good idea to specify them yourself. This is done via a function which is run for each MCMC chain.</p>
+
+<p>Generally intials are set to random number from a distribution with mean 0 and sd 1 but for variance parameters, which must be postive, these are initialised at 1.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">inits <span class="o">&lt;-</span> <span class="kr">function</span> <span class="p">()</span> <span class="p">{</span><span class="kt">list</span><span class="p">(</span>alpha <span class="o">=</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">),</span>
+                           beta <span class="o">=</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">),</span>
+                           sigma <span class="o">=</span> <span class="m">1</span><span class="p">)}</span>
+</code></pre></div>
+<h3 id="mcmc-settings">MCMC settings</h3>
+
+<p>Lastly, we need to define the MCMC settings to hand to WinBUGS. Generally it is a good idea to begin with a small number of samples to test if the model will run before increasing to run the final model.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R"> nc <span class="o">&lt;-</span> <span class="m">3</span>      <span class="c1">#number of MCMC chains to run</span>
+ ni <span class="o">&lt;-</span> <span class="m">5000</span>  <span class="c1">#number of samples for each chain     </span>
+ nb <span class="o">&lt;-</span> <span class="m">1000</span>   <span class="c1">#number of samples to discard as burn-in</span>
+ nt <span class="o">&lt;-</span> <span class="m">1</span>      <span class="c1">#thinning rate, increase this to reduce autocorrelation</span>
+</code></pre></div>
+<h2 id="run-the-bugs-model">Run the BUGS model</h2>
+
+<p>To run the model we supply the bugs function with the data, initials, parameters, model file and MCMC settings defined above. </p>
+
+<p>Running the model will open up a WinBUGS window, if debug=FALSE this window closes and automatically returns to R when the model has finished running. However, this removes error messages produced by WinBUGS so it is usually advisable to set debug=TRUE and close the WinBUGS window manually after inspection of any error messages.</p>
+
+<p>Note you must specify the directory in which the WinBUGS .exe is stored.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">bugs.out <span class="o">&lt;-</span> bugs<span class="p">(</span>data<span class="o">=</span>data<span class="p">,</span> inits<span class="o">=</span>inits<span class="p">,</span> parameters.to.save<span class="o">=</span>params<span class="p">,</span> model.file<span class="o">=</span><span class="s">&quot;mod1.txt&quot;</span><span class="p">,</span> 
+ n.chains<span class="o">=</span>nc<span class="p">,</span> n.iter<span class="o">=</span>ni<span class="p">,</span> n.burnin<span class="o">=</span>nb<span class="p">,</span> n.thin<span class="o">=</span>nt<span class="p">,</span> debug<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> DIC<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> bugs.directory <span class="o">=</span> <span class="s">&quot;C:\\Program Files\\WinBUGS14&quot;</span><span class="p">,</span> working.directory<span class="o">=</span><span class="kp">getwd</span><span class="p">())</span>
+</code></pre></div>
+<h2 id="plot-and-evaluate-mcmc-output">Plot and evaluate MCMC output</h2>
+
+<p>The MCMC chains and parameter estimates can be inspected in the WinBUGS window or in R. The WinBUGS window needs to be closed before R can be used again.</p>
+
+<p>The output table can be printed to look at coefficient values and credible intervals</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R"><span class="kp">print</span><span class="p">(</span>bugs.out<span class="p">,</span> digits <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</code></pre></div>
+<p>The bugs.out object contains not only the parameter estimates but also the MCMC chain values so is quite large. We can save key parts of the output to variables</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">bugs.summary <span class="o">&lt;-</span> bugs.out<span class="o">$</span><span class="kp">summary</span>
+bugs.DIC <span class="o">&lt;-</span> bugs.out<span class="o">$</span>DIC
+</code></pre></div>
+<p>We can also plot the output
+<code>R
+plot(bugs.out) # gives a summary plot of coefficients and credible intervals
+mcmcplot(bugs.out) # opens up a new window with a set of plots to evaluate mcmc chain convergence
+</code></p>
+
+<p>We can see that the model has converged well and comparison of the mean values for alpha and beta with our <code>lm</code> model output show very similar results.</p>
+
+<p><strong>Success! Time for a cup of tea</strong> </p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>Although WinBUGS code is not exactly succinct it is extremely flexible. While it probably isn&#39;t worth writing 20 lines of code to replicate the results of <code>lm</code>, WinBUGS is a good solution to avoid writing your own likelihood functions in R for complex models. Most distributions are supported and you can even define your own.</p>
+
+<p>For more information on how to specify more complex models Marc Kery and Michael Schaub have written two books on Bayesian analysis in WinBUGS which cover an <a href="http://www.mbr-pwrc.usgs.gov/pubanalysis/kerybook/">introduction to Bayesian statistics and WinBUGS</a> and a more in depth exploration of <a href="http://www.vogelwarte.ch/de/projekte/publikationen/bpa/">hierachical population models</a>.</p>
+
+        </div>
+      </div>
+
+      
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+      
+      
+    
+
+    
+
+<div class="unit one-fifth hide-on-mobiles">
+    <aside>
+    <hr class='doc-bar'> </hr>
+    Also in <i>Bayesian</i>:<br>
+    <ul>
+      
+        
+        
+          <li><a href="http://bes-qsig.github.io/fge/docs/IntroWinBUGSwithR/">Introduction to WinBUGs with R</a></li>
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    </ul>
+    <hr class='doc-bar'> </hr>
+    </aside>
+</div>
+
+
+  </div>
+
+  </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer grid hide-on-mobiles">
+  <div class='unit half align-center'>
+    <div class='unit half'>
+      <!-- Empty grid -->
+    </div>
+    <div class='unit half'>
+      <a href="mailto:computational@britishecologicalsociety.org" style="margin-right:10px">
+          <span class='icon icon--email'>
+              &#9993
+              <span class="username">E-mail</span>
+          </span>
+      </a>
+      <a href="https://github.com/BES-QSIG" style="margin-right:10px">
+        <span class="icon  icon--github">
+          <svg viewBox="0 0 16 16">
+            <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+          </svg>
+        </span>
+        <span class="username">BES-QSIG</span>
+      </a>
+      <a href="https://twitter.com/BES_QE_SIG" style="margin-right:10px">
+        <span class="icon  icon--twitter">
+          <svg viewBox="0 0 16 16">
+            <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+            c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+          </svg>
+        </span>
+        <span class="username">BES_QE_SIG</span>
+      </a><br><br>
+      
+        <p id="pphotocredit">
+          Unknown photo
+        </p>
+      
+      
+    </div>
+  </div>
+  <div class='unit half align-left'>
+    <!--
+    Logo dimensions:
+    BES-QSIG - 200 x 200
+    Jekyll - 573 x 254
+    GitHub - 800 × 209
+    -->
+    <img src='/fge/img/besqsig_logo.png' width="100" height="100" alt="BES-QSIG" style='margin-right:10px'>
+    <img src='/fge/img/jekyll_logo.png' width="143" height="64" alt="Jekyll" style="margin-right:10px">
+    <img src='/fge/img/github_logo.png' width="100" height="26" alt="GitHub" style="margin-right:10px">
+  </div>
+</footer>
+
+  <!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64066157-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
