@@ -27,6 +27,8 @@ lastchange: {1}
 title: {2}
 status: {3}
 permalink: {4}
+source: {5}
+source_author: {6}
 ---
 """
 
@@ -45,7 +47,7 @@ def get_contributors(input_dir):
 
 
 def get_contributions(doc_path, input_dir):
-    """Return string of authors and their percentage contributions"""
+    """Return string of top three authors and their percentage contributions"""
     # read git log
     cmd = 'git log --stat {0}'.format(doc_path)
     process = subprocess.Popen(cmd, stdout=subprocess.PIPE,
@@ -81,7 +83,7 @@ def get_contributions(doc_path, input_dir):
     sorted_by_changes.reverse()
     # unpack
     author_string = ''
-    for e in sorted_by_changes:
+    for e in sorted_by_changes[:2]:
         author_string += '{0} ({1}%), '.format(e[0], e[1])
     return(author_string.strip(', '))
 
@@ -117,8 +119,8 @@ def read_doc(doc_path, input_dir):
         text = text[res.end():]
         doc_fm = {}
         for e in text_fm.split('\n'):
-            if ':' in e:
-                key, value = e.split(':')
+            if ': ' in e:
+                key, value = e.split(': ')
                 doc_fm[key] = value.strip()
         return(doc_fm, text[1:])
 
@@ -136,10 +138,18 @@ def run(input_dir, output_dir):
         last_change = get_last_change(doc, input_dir)
         title = doc_fm['title']
         status = doc_fm['status']
+        if 'source' in doc_fm.keys():
+            source = doc_fm['source']
+        else:
+            source = ''
+        if 'source_author' in doc_fm.keys():
+            source_author = doc_fm['source_author']
+        else:
+            source_author = ''
         permalink = '/docs/{0}/'.format(doc.replace('.md', ''))
         # construct front-matter
         new_fm = front_matter.format(authors, last_change, title, status,
-                                     permalink)
+                                     permalink, source, source_author)
         # combine
         new_doc = new_fm + doc_text
         # write out
