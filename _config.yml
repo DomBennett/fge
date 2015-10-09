@@ -16,7 +16,7 @@ permalink: /news/:year/:month/:day/:title/
 # Social
 twitter_username: BES_QE_SIG
 github_username:  BES-QSIG
-email: computational@britishecologicalsociety.org
+email: quantitative@britishecologicalsociety.org
 
 # Build settings (GHFM)
 markdown: redcarpet
