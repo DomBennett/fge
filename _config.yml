@@ -4,6 +4,7 @@ subtitle: Crowd-sourced notes on all things<br>computational and quantitative in
 acronym: FGE
 
 # URLS
+licenseurl: "https://github.com/BES-QSIG/fge/blob/master/LICENSE"
 baseurl: "/fge"
 docurl: "https://github.com/BES-QSIG/docs/blob/master/"
 imgurl: "https://raw.githubusercontent.com/BES-QSIG/docs/master/img"
