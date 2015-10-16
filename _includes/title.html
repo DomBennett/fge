@@ -22,7 +22,7 @@
   <b>Author(s)</b>: {{ page.authors | join: ', ' }}<br>
   <b>Status</b>: {{ page.status | capitalize }}<br>
   <b>Last edit</b>: {{ page.lastchange }}
-  {% if page.source != "" %}
+  {% if page.source %}
     <br><p style="font-size:small">
       The content below is based on material provided by:<br>
       <a href="{{ page.source }}">{{ page.source_author }}</a>
