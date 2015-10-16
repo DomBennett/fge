@@ -376,6 +376,15 @@ pre {
         font-size: 18px; } }
 
 /**
+ * Contributors
+ */
+.contributors {
+  font-size: 14px;
+  text-align: left;
+  padding: 5px;
+  padding-bottom: 10px; }
+
+/**
  * Syntax highlighting styles
  */
 .highlight {
