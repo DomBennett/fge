@@ -17,7 +17,9 @@ import re
 import sys
 import subprocess
 import operator
+from github import Github
 from shutil import copyfile
+
 
 # GLOBALS
 front_matter = """---
@@ -31,19 +33,37 @@ source: {5}
 source_author: {6}
 ---
 """
+part_github_yml = """- name: {0}
+  email: {1}
+  affiliation: {2}
+  image: {3}
+  github_username: {4}
+"""
 
 
 # FUNCTIONS
-def get_contributors(input_dir):
-    """Return list of all authors in alphabetical order"""
-    # read git log
-    cmd = "git log --format='%an' | sort -u"
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE,
-                               shell=True, stderr=subprocess.PIPE,
-                               cwd=input_dir)
-    gitlog, _ = process.communicate()
-    contributors = gitlog.split('\n')[:-1]
-    return contributors
+def gen_github_yaml():
+    """Use GitHub API to generate _data/github.yml"""
+    # get GitHub info
+    g = Github()
+    repo = g.get_repo('BES-QSIG/docs')
+    contributors = {}
+    for ctb in repo.get_contributors():
+        if ctb.name:
+            name = ctb.name
+        else:
+            name = ctb.login
+        contributors[name] = {'affiliation': ctb.company,
+                              'image': ctb.avatar_url, 'email': ctb.email,
+                              'github_username': ctb.login}
+    # convert to yaml
+    github_yml = ''
+    for name in sorted(contributors.keys()):
+        ctb = contributors[name]
+        github_yml += part_github_yml.format(name, ctb['email'],
+                                             ctb['affiliation'], ctb['image'],
+                                             ctb['github_username'])
+    return github_yml
 
 
 def get_contributions(doc_path, input_dir):
@@ -176,7 +196,6 @@ if __name__ == '__main__':
     # run
     run(input_dir=input_dir, output_dir=output_dir)
     # put contributors in data/contributors.yml
-    conts = get_contributors(input_dir)
-    with open(os.path.join(data_dir, 'contributors.yml'), 'wb') as f:
-        for cont in conts:
-            f.write("- {0}\n".format(cont))
+    github_yml = gen_github_yaml()
+    with open(os.path.join(data_dir, 'github.yml'), 'wb') as f:
+        f.write(github_yml)
