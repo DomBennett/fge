@@ -6,33 +6,18 @@ title: Index
 <section class="page">
     <div class="grid">
       {% for theme in site.data.docs %}
-        <div class="unit one-third">
+        <div class="unit half">
           <h3>{{ theme.title }}</h3>
+          <ul style="list-style-type: none;">
           {% for doc in site.docs %}
             {% assign doc_id = doc.url | split: '/' | last %}
               {% if theme.docs contains doc_id %}
-                <li><a href="{{ doc.url | prepend: site.baseurl }}">{{ doc.title }}</a></li>
+                <li><a href="{{ doc.url | prepend: site.baseurl }}">{{ doc.title }}
+                </a>(<i>{{ doc.status }}</i>)</li>
               {% endif %}
           {% endfor %}
+          </ul>
         </div>
     {% endfor %}
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 </section>
