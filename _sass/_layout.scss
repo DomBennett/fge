@@ -134,6 +134,8 @@
 }
 
 .footer-col-wrapper {
+    border-top: 2px solid $brand-color-light;
+    padding-top: 10px;
     font-size: small;
     text-align: center;
     margin-left: -$spacing-unit / 2;
