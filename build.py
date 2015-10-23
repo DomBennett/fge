@@ -121,8 +121,9 @@ def get_last_change(doc_path, input_dir):
     # take first of the list
     last_change = commits[0]
     # extract date and year (ignore time)
-    last_change = last_change[0:9] + ', ' + last_change[20:24]
-    return(last_change)
+    last_change = last_change.split(' ')
+    del last_change[3]
+    return('-'.join(last_change[:4]))
 
 
 def read_doc(doc_path, input_dir):
