@@ -4,20 +4,40 @@ title: Index
 ---
 
 <section class="page">
-    <div class="grid">
-      {% for theme in site.data.docs %}
-        <div class="unit half">
-          <h3>{{ theme.title }}</h3>
-          <ul style="list-style-type: none;">
-          {% for doc in site.docs %}
-            {% assign doc_id = doc.url | split: '/' | last %}
-              {% if theme.docs contains doc_id %}
-                <li><a href="{{ doc.url | prepend: site.baseurl }}">{{ doc.title }}
-                </a>(<i>{{ doc.status }}</i>)</li>
-              {% endif %}
-          {% endfor %}
-          </ul>
-        </div>
+  {% for theme in site.data.docs %}
+    <h3>{{ theme.title }}</h3>
+    <ul style="list-style-type: none;">
+    {% for doc in site.docs %}
+      {% assign doc_id = doc.url | split: '/' | last %}
+        {% if theme.docs contains doc_id %}
+          <li><a href="{{ doc.url | prepend: site.baseurl }}"
+                 title="Status: {{ doc.status | capitalize }}
+Last change: {{ doc.lastchange }}
+Authors: {{ doc.authors }}">
+                 {{ doc.title }}
+               </a> <small><sup><font color="grey">({{ doc.status }})</font></sup></small>
+        {% endif %}
     {% endfor %}
-  </div>
+    </ul>
+  {% endfor %}
 </section>
+
+<!--
+<h1>Index</h1>
+<table>
+{% for theme in site.data.docs %}
+    {% for doc in site.docs %}
+      {% assign doc_id = doc.url | split: '/' | last %}
+      {% if theme.docs contains doc_id %}
+       <tr>
+         <td>{{ theme.title }}</td>
+         <td><a href="{{ doc.url | prepend: site.baseurl }}">{{ doc.title }}</a></td>
+         <td>{{ doc.status | downcase }}</td>
+         <td>{{ doc.authors }}</td>
+         <td>{{ doc.lastchange }}</td>
+       </tr>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  </table>
+-->
