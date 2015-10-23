@@ -44,7 +44,7 @@ menu:
     url:          /contributors
 
 # 'Collections' settings
-exclude: ['_docs/README.md', '_docs/LICENSE', 'build.py']
+exclude: ['_docs/README.md', '_docs/LICENSE', 'build.py', 'vendor']
 collections:
   docs:
     output: true
