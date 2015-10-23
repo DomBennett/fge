@@ -59,9 +59,9 @@
   </h1>
 
 
-  <b>Author(s)</b>: Dominic Bennett (100.0%)<br>
-  <b>Status</b>: Complete<br>
-  <b>Last edit</b>: Fri Oct 2, 015
+  Dominic Bennett (100.0%)<br>
+  Complete<br>
+  Fri-Oct-23-2015
   
 
 
@@ -148,15 +148,7 @@
             <a href="https://github.com/BES-QSIG/docs/blob/master/how_to_contribute.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
         </div>
         <div class="doc-content">
-          <h1 id="contents">Contents</h1>
-
-<ul>
-<li><a href="#how-to-contribute">How to contribute</a></li>
-<li><a href="#online-editing">Online editing</a></li>
-<li><a href="#doc-keepers">Doc-Keepers</a></li>
-</ul>
-
-<h1 id="how-to-contribute">How to contribute</h1>
+          <h1 id="how-to-contribute">How to contribute</h1>
 
 <p>To contribute to the FGE website you will need the following:</p>
 
@@ -170,26 +162,53 @@ simple guide)</li>
 <p>All documents hosted on this website are held in the <a href="https://github.com/BES-QSIG/docs/">docs repository</a>
 as part of the British Ecological Society&#39;s Quantitative Ecology Special
 Interest Group (BES-QSIG) GitHub organisation. In order to edit or add documents
-you must first fork this repository. If you are not familiar with GitHub, then
-below is a walkthrough of how to edit the documents hosted on the FGE website
-through GitHub&#39;s website -- &#39;Online editing&#39;.</p>
+you must first fork this repository and then send a pull request with your changes.</p>
+
+<p>If you are not familiar with GitHub, then please follow our step-by-step walkthrough
+for making contributions online -- <a href="http://bes-qsig.github.io/fge/docs/contributing_online/">Contributing online</a>.</p>
+
+<h2 id="what-should-a-guide-contain?">What should a guide contain?</h2>
+
+<p>Guides can be technical introductions to programming languages, walkthroughs on
+performing specific tasks, general explanations of quantitative methods,
+tidbits of useful computational information, comparisons between alternative methods,
+&quot;What I did&quot; historical accounts of methods used in recent analyses, nifty tricks
+for efficient research, descriptions of things you like about R, descriptions of
+things you hate about R .... etc.</p>
+
+<p>In short, anything you feel might be useful.</p>
+
+<h2 id="suggesting-changes">Suggesting changes</h2>
+
+<p>If you spot an error, wish to suggest a topic or make any sort of comment
+then please use the GitHub issues page for the <a href="https://github.com/BES-QSIG/docs/">docs repository</a>
+found <a href="https://github.com/BES-QSIG/docs/issues">here</a>. There, you can create
+new issues or make comments on existing issues. All users who are watching the
+repository will be informed. You will need a GitHub account if you do not
+already have one.</p>
+
+<h2 id="document-format">Document format</h2>
 
 <p>All documents provided must be in Markdown script. Please save your documents
 with the .md extension e.g. <code>[name_file].md</code>. At the top of every document
-please provide this &#39;front matter&#39;:</p>
+please provide &#39;front matter&#39;. Front matter tells the website how to interpret
+the document, there are two metadata tags that must be provided:</p>
+
+<ul>
+<li><code>status</code>: e.g. complete, incomplete, in progress (free text)</li>
+<li><code>title</code>: Introduction to ..., How to .... (free text)</li>
+</ul>
+
+<p>These tags must be put at the top of the page and be separated above and below
+by <code>---</code>. For example, at the top of this page the front matter is:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">---
-layout: doc
 status: complete
 title: How to contribute
 ---
 </code></pre></div>
-<p>Front matter tells the website how to interpret the document.</p>
+<p>Please note, the space between the colon and the free text.</p>
 
-<ul>
-<li><code>layout</code>: type of document (always doc)</li>
-<li><code>status</code>: e.g. complete, incomplete, in progress (free text)</li>
-<li><code>title</code>: Introduction to ..., How to .... (free text)</li>
-</ul>
+<h2 id="index">Index</h2>
 
 <p>If you have created a new document please also update the <a href="https://github.com/BES-QSIG/docs/blob/master/index.yml"><code>index.yml</code></a>.
 This tells the website where to index the new document. It groups related documents
@@ -204,95 +223,43 @@ under different themes. For example, at the top of the index is:</p>
 into the theme titled FGE. Please add new titles following the syntax above if
 a new document does not fit into any existing themes.</p>
 
-<h1 id="online-editing">Online editing</h1>
+<h2 id="source-attribution">Source attribution</h2>
 
-<p>GitHub is an online database of git repositories. These can be thought of as
-folders where every file or folder contains a history of every change ever made
-to it. The walkthrough below will describe how you can make changes to the BES-QSIG
-docs repository. It covers three GitHub concepts:</p>
+<p>If you are creating a document that is based on a page that exists elsewhere
+on the internet (e.g. a personal blog page), you can highlight the original
+source by adapting the front matter.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">---
+status: [status of doc]
+title: [title of doc]
+source: [source page URL]
+source_author: [name of source author]
+---
+</code></pre></div>
+<h2 id="licensing">Licensing</h2>
+
+<p>Please note all guides produced are under a creative commons license (<a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>). This means any contributions made to the <a href="https://github.com/BES-QSIG/docs/">docs repository</a>
+can be used by other parties so long as they are properly attributed.</p>
+
+<h2 id="quick-style-suggestions">Quick style suggestions</h2>
+
+<p>Everyone will have their own style of writing, and that&#39;s good. A diversity of
+writers will mean a diversity of readers. But here we would like to
+outline some general writing suggestions:</p>
 
 <ul>
-<li>Forking</li>
-<li>Editing online with GitHub</li>
-<li>Pull requests</li>
+<li>Write to the audience the guide is aimed at (beginners, novices, experts)</li>
+<li>Keep language and sentences simple</li>
+<li>Avoid using phrases like: &#39;Just do this ...&#39;, &#39;Simply run ...&#39;, &#39;You can then easily ...&#39;
+(These will often lead to an annoyed reader)</li>
+<li>Make examples authentic (i.e. explaining a for loop with real ecological data rather than counting 1 to 10)</li>
+<li>Justification is just as important as explanation, thoroughly provide the reasons why your reader should follow your guide</li>
 </ul>
 
-<h2 id="forking">Forking</h2>
-
-<p>To prevent spamming, the master copy of the docs repository is protected from
-anyone making changes to it. In order for you to make changes or add new files
-it must first be copied to your own GitHub account, this is called forking in
-GitHub terminology.</p>
-
-<p>To make a copy go to the docs repository url (<a href="https://github.com/BES-QSIG/docs">https://github.com/BES-QSIG/docs</a>)
-and click fork.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/fork-button.png" alt="fork-button" title="The fork button"></p>
-
-<p>You will now find a copy of the repository in your own GitHub account (Profile --&gt; Repositories).</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/forked-repo.png" alt="forked-repository" title="A forked repository"></p>
-
-<p>This is your copy and you can make any changes you want.</p>
-
-<h2 id="making-changes">Making changes</h2>
-
-<p>Selecting one of the documents (e.g. how to contribute) you can make changes to a file directly using GitHub&#39;s edit button.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/edit-button.png" alt="edit-button" title="The edit button"></p>
-
-<p>This will open a text editor where you can modify the Markdown script. In this example I have added a new title and some text.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/editing.png" alt="editing" title="Editing"></p>
-
-<p>We can preview how the Markdown script will be parsed by clicking the preview changes. Handily, GitHub has highlighted where the additions have occurred with green lines.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/previewing-changes.png" alt="previewing-changes" title="Previewing changes"></p>
-
-<p>GitHub requires any changes made to a file to be &#39;committed&#39;. This will update the file with the change you have made and it will record the file&#39;s state before the change. All commits made must have a message describing the changes. In this example, our message is &#39;added new title&#39; and the additional information is &#39;I&#39;ve added a new title and new text.&#39; We will commit these changes directly to our copy of the docs repo (termed here as the &#39;master branch&#39;). (Selecting &#39;Create a new branch for this commit and start a pull request&#39; would skip the pull request section below.)</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/commit.png" alt="commit" title="Committing the change"></p>
-
-<h2 id="adding-new-files">Adding new files</h2>
-
-<p>To create a new file (text based files only) click the + symbol.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/adding-files.png" alt="adding-files" title="Add file"></p>
-
-<p>This will take you to a new editing screen where you write your markdown and preview as before.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/creating-files.png" alt="creating-files" title="Creating file"></p>
-
-<p>Please make sure you use the .md file extension and include front matter as described above.</p>
-
-<h2 id="creating-a-pull-request">Creating a pull request</h2>
-
-<p>Navigating to the main page of your copy of the docs repository will show how many commits ahead your copy of the repository (called a branch) is compared to the original.
-In this example, it is 1 commit ahead of the BES-QSIG:master. You can have as many commits as you wish, including changes and new files.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/pull-request-1.png" alt="pull-request-1" title="Pull request 1"></p>
-
-<p>Clicking on compare will show us how our branch and the BES-QSIG:master branch differ. Additions are marked in green and deletions are marked in red. In this example, the two branches can be readily merged allowing us to perform a &#39;pull request&#39;.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/pull-request-2.png" alt="pull-request-2" title="Pull request 2"></p>
-
-<p>A &#39;pull request&#39; is used to merge two branches, &quot;please could you pull my branch into your branch&quot;. If we click on &#39;pull request&#39; GitHub will invite us to describe the changes we have made by showing us a similar screen to what we see when we make commits. In this case it is just one commit, but it could be many.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/create-pull-request.png" alt="create-pull-request" title="Opening a pull request"></p>
-
-<p>Clicking &#39;create pull request&#39; will inform the maintainers of
-the docs repository that someone wishes to make a change. This is done by creating a page where maintainers can view your changes and discuss them with you.</p>
-
-<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/opened-pull-request.png" alt="opened-pull-request" title="An open pull request"></p>
-
-<p>If the maintainer is happy with the changes in your branch, they will merge your branch and the original and your changes will be incorporated into the FGE website within a few days.</p>
-
-<h1 id="doc-keepers">Doc-Keepers</h1>
+<h2 id="doc-keepers">Doc-Keepers</h2>
 
 <p>To edit files on the repo without the need for forking or pull requests you will need to
-join the doc-keepers&#39; team in the <a href="https://github.com/BES-QSIG">BES-QSIG GitHub organisation</a>. If you join this team you will have write access to the docs repository and can add or edit documents directly.</p>
-
-<p>If you would like to join the team, please email:
+join the doc-keepers&#39; team in the <a href="https://github.com/BES-QSIG">BES-QSIG GitHub organisation</a>.
+If you would like to join, please email:
 <a href="mailto:dominic.john.bennett@gmail.com">dominic.john.bennett@gmail.com</a></p>
 
         </div>
@@ -319,6 +286,8 @@ join the doc-keepers&#39; team in the <a href="https://github.com/BES-QSIG">BES-
 
     
 
+    
+
 <div class="unit one-fifth hide-on-mobiles">
     <aside>
     <hr class='doc-bar'> </hr>
@@ -329,6 +298,11 @@ join the doc-keepers&#39; team in the <a href="https://github.com/BES-QSIG">BES-
         
       
         
+        
+      
+        
+        
+          <li><a href="http://bes-qsig.github.io/fge/docs/contributing_online/">Contributing online</a></li>
         
       
         
@@ -400,6 +374,9 @@ join the doc-keepers&#39; team in the <a href="https://github.com/BES-QSIG">BES-
         
         
       
+        
+        
+      
     </ul>
     <hr class='doc-bar'> </hr>
     </aside>
@@ -414,7 +391,6 @@ join the doc-keepers&#39; team in the <a href="https://github.com/BES-QSIG">BES-
   </div>
 
   <div class="wrapper">
-
    <div class="footer-col-wrapper">
 
      <div class="footer-col  footer-col-1">

@@ -243,6 +243,8 @@ pre {
   margin-left: 0; }
 
 .footer-col-wrapper {
+  border-top: 2px solid #e4f7ea;
+  padding-top: 10px;
   font-size: small;
   text-align: center;
   margin-left: -15px; }

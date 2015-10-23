@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FGE &middot; Developing this website</title>
+  <title>FGE &middot; Problems and Solutions in R</title>
   <meta name="description" content="Crowd-sourced notes on all things<br>computational and quantitative in ecological research">
   <link rel="stylesheet" href="/fge/css/main.css">
-  <link rel="canonical" href="http://bes-qsig.github.io/fge/docs/developing_this_website/">
+  <link rel="canonical" href="http://bes-qsig.github.io/fge/docs/problems_and_solutions_r/">
   <link rel="alternate" type="application/rss+xml" title="Field Guides for Ecologists" href="http://bes-qsig.github.io/fge/feed.xml" />
   <link rel="icon" type="image/x-icon" href="/fge/favicon.ico">
   <script type="text/javascript" src="/fge/js/jquery-2.1.0.min.js"></script>
@@ -55,12 +55,12 @@
         <div class='site-title'>
             
   <h1>
-    Developing this website
+    Problems and Solutions in R
   </h1>
 
 
   Dominic Bennett (100.0%)<br>
-  Complete<br>
+  Contributions wanted<br>
   Fri-Oct-23-2015
   
 
@@ -145,135 +145,86 @@
 
       <div class="unit four-fifths">
         <div class="edit-message">
-            <a href="https://github.com/BES-QSIG/docs/blob/master/developing_this_website.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
+            <a href="https://github.com/BES-QSIG/docs/blob/master/problems_and_solutions_r.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
         </div>
         <div class="doc-content">
-          <p>Here I will describe how to download, set-up and develop the FGE website.</p>
+          <h1 id="problems-and-solutions">Problems and solutions</h1>
 
-<h2 id="website-dependencies">Website dependencies</h2>
+<h2 id="premise">Premise</h2>
 
-<ul>
-<li>Mac, Linux or other Unix operating system</li>
-<li><a href="https://www.python.org/">Python</a></li>
-<li><a href="http://jekyllrb.com/">Jekyll</a></li>
-<li><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a></li>
-</ul>
+<p>The idea of this document is to present common (and often confusing) grievances
+I encounter with R and how I go about resolving them.</p>
 
-<h2 id="website-repositories">Website repositories</h2>
-
-<p>The website is held online across two different Git repositories and three
-branches. These are:</p>
+<h2 id="contents">Contents</h2>
 
 <ul>
-<li><a href="https://github.com/BES-QSIG/fge">fge, master branch</a>(<code>fge-master</code>)</li>
-<li><a href="https://github.com/BES-QSIG/fge/tree/gh-pages">fge, gh-pages branch</a>(<code>fge-gh-pages</code>)</li>
-<li><a href="https://github.com/BES-QSIG/docs">docs, master branch</a>(<code>docs</code>)</li>
+<li><a href="#extracting-a-vector-from-a-data-frame-of-characters">Extracting a vector from a data frame of characters</a></li>
 </ul>
 
-<h2 id="directory-structure">Directory structure</h2>
+<h2 id="extracting-a-vector-from-a-data-frame-of-characters">Extracting a vector from a data frame of characters</h2>
 
-<p>Each of the three different branches need to be downloaded and placed in the
-specific directory structure as below, where the <code>fge/</code> directory
-represents the <code>fge-master</code> branch, and <code>_docs_repo/</code> and <code>_site/</code> are
-ignored directories within <code>fge/</code> representing the <code>docs</code> and
-<code>fge-gh-pages</code> branches respectively.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">-fge/
-    -_docs_repo@BES-QSIG/docs.git
-      [.md files of guides]
-    -_site@BES-QSIG/fge/tree/gh-pages
-      [hostable website]
-    -_layouts/
-      [page layouts]
-    -_sass/
-      [css scripts]
-    -_includes/
-      [head etc.]
-    -css/
-      [css script]
-    -fonts/
-      [fonts]
-    -guides/
-      [index of guides]
-    -js/
-      [javascript files]
-    -img/
-      [cover.jpg etc.]
-    -README.md
-      [GitHub README]
-    -feed.xml
-      [RSS feed]
-    -index.html
-      [home page]
-    -.gitignore
-      [git ignore]
-    -_config.yml
-      [Jekyll config file]
-    -favicon.ico
-      [BES symbol]
+<h3 id="problem">Problem</h3>
+
+<p>I often want to loop through a data frame and extract a vector from it. This is
+fine if that data frame contains numbers. For example, the following code
+generates a data frame of numbers, extracting the first row creates a vector
+equal to a vector of 1 to 5.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">numbers.df <span class="o">&lt;-</span> <span class="kt">data.frame</span> <span class="p">(</span>c1<span class="o">=</span>rep <span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c2<span class="o">=</span>rep <span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c3<span class="o">=</span>rep <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c4<span class="o">=</span>rep <span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c5<span class="o">=</span>rep <span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">))</span>
+row.element <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span>
+all <span class="p">(</span>row.element <span class="o">%in%</span> numbers.df<span class="p">[</span><span class="m">1</span><span class="p">,])</span>  <span class="c1"># TRUE</span>
 </code></pre></div>
-<h2 id="setting-up-the-files-and-folders">Setting up the files and folders</h2>
-
-<p>To set up the above directory structure, follow these commands.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Download a copy of test-cge master branch</span>
-git clone https://github.com/BES-QSIG/fge.git
-<span class="c"># Move into downloaded folder</span>
-<span class="nb">cd </span>fge
-<span class="c"># Download copy of gh-pages branch, place in folder called _site/</span>
-git clone https://github.com/BES-QSIG/fge.git -b gh-pages _site
-<span class="c"># Download copy of docs repo, place in folder called _docs_repo/</span>
-git clone https://github.com/BES-QSIG/docs.git _docs_repo/
+<p>But if I switch to characters, it doesn&#39;t work.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">letters.df <span class="o">&lt;-</span> <span class="kt">data.frame</span> <span class="p">(</span>c1<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c2<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c3<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c4<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c5<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">))</span>
+row.element <span class="o">&lt;-</span> <span class="kt">c</span> <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">)</span>
+all <span class="p">(</span>row.element <span class="o">%in%</span> letters.df<span class="p">[</span><span class="m">1</span><span class="p">,])</span>  <span class="c1"># FALSE!</span>
 </code></pre></div>
-<h2 id="using-jekyll,-build.py-and-git-to-update-the-website">Using Jekyll, build.py and Git to update the website</h2>
-
-<p>Once downloaded, make your changes within <code>docs/</code> to add or change any of the
-tutorials or within <code>fge/</code> to edit the look of the website. You can then
-upload these changes for each of the three branches.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Ensure you&#39;re in fge/</span>
-<span class="nb">pwd</span>
-<span class="c"># Parse tutorials for hosting on site with build (creates _docs/)</span>
-python build.py
-<span class="c"># Build website</span>
-jekyll build
-<span class="c"># Test website locally</span>
-jekyll serve
-<span class="c"># Navigate your browser to http://127.0.0.1:4000/fge/ to see local version</span>
-<span class="c"># Once happy, update each of the three Git repos</span>
-git status  <span class="c"># check branch and folder</span>
-git add <span class="o">[</span>FILENAME<span class="o">]</span>
-git commit <span class="o">[</span>FILENAME<span class="o">]</span> -m <span class="o">[</span>MESSAGE<span class="o">]</span>
-<span class="c"># And push the changes</span>
-git push
+<p>How should I resolve this? Printing <code>letters.df[1,]</code> returns this:</p>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span> letters.df<span class="o">[</span>1,<span class="o">]</span>
+<span class="go">  c1 c2 c3 c4 c5</span>
+<span class="go">1  a  b  c  d  e</span>
 </code></pre></div>
-<p>There are two steps to building the hostable website in <code>_site/</code>. <code>build.py</code>
-is a custom python script updates guides&#39; front-matter using the git repo to
-get authors and last date since update. It places updated docs in <code>_docs/</code>
-which is what Jekyll looks for when building the wesbite. <code>jekyll build</code> then
-constructs the hostable website from the layout information, css objects etc.</p>
-
-<p>It is useful to double check the look and functionality of the website
-with <code>jekyll serve</code> before pushing to GitHub.</p>
-
-<p>For the <code>gh-pages</code> branch, version control is not important so you can add and
-commit all files and force a push to GitHub.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git status  <span class="c"># make sure this is the gh-pages branch</span>
-git add .  <span class="c"># add all files</span>
-git commit -a -m <span class="o">[</span>MESSAGE<span class="o">]</span>  <span class="c"># commit all changes</span>
-git -f push  <span class="c"># force a push, ignore any conflicts</span>
+<p>So perhaps if I convert the vector into characters it will work.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">all <span class="p">(</span>row.element <span class="o">%in%</span> as.character <span class="p">(</span>as.vector <span class="p">(</span>letters.df<span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="p">])))</span>  <span class="c1"># FALSE</span>
 </code></pre></div>
-<blockquote>
-<p>PLEASE DO NOT DO THIS FOR THE MASTER BRANCHES. For the <code>fge</code> master branch
-and <code>docs</code> repo it&#39;s important that all changes are version controlled so that
-we can revert to old versions if anything goes wrong. Make sure you add and
-commit any new files and commit any changes to original files with commit
-messages. It is especially important you do not use the <code>-f</code> flag when pushing
-to GitHub, as you may overwrite someone else&#39;s work.</p>
-</blockquote>
+<p>No, because this has simply converted the vector into a vector of 1s.</p>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span> as.character <span class="o">(</span>as.vector <span class="o">(</span>letters.df<span class="o">[</span>1, <span class="o">]))</span>
+<span class="go">[1] &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot;</span>
+</code></pre></div>
+<h3 id="solution-1">Solution 1</h3>
 
-<p>Note, the website is built in the <code>_site/</code> directory and GitHub uses this
-directory as the <code>gh-pages</code> branch to construct the website. Therefore, the
-website will not change if the <code>gh-pages</code> branch is not updated.</p>
+<p>The problem is to do with levels in the data frame. When we extract our row
+we also need to drop the data frame class. (By default, <code>[]</code> preserve the data.frame
+class even though its a single row). This returns a <code>list</code> so we need to then
+convert this into a vector using <code>unlist()</code>. Now there are still levels but these
+refer to levels within the vector rather than the original <code>data.frame</code>. To drop
+these we can use <code>as.character()</code>.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">res <span class="o">&lt;-</span> as.character <span class="p">(</span>unlist <span class="p">(</span>letters.df<span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="p">,</span>drop<span class="o">=</span><span class="kc">TRUE</span><span class="p">]))</span>
+all <span class="p">(</span>row.element <span class="o">%in%</span> res<span class="p">)</span>  <span class="c1"># TRUE</span>
+</code></pre></div>
+<h3 id="solution-2">Solution 2</h3>
 
-<!-- References -->
+<p>The above solution is complicated. The problem is to do with levels. Therefore,
+another solution is to force all strings not to be made into factors when we create our data
+frame.</p>
+<div class="highlight"><pre><code class="language-R" data-lang="R">letters.df <span class="o">&lt;-</span> <span class="kt">data.frame</span> <span class="p">(</span>c1<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c2<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c3<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c4<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          c5<span class="o">=</span>rep <span class="p">(</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+                          stringsAsFactors<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+all <span class="p">(</span>row.element <span class="o">%in%</span> letters.df<span class="p">[</span><span class="m">1</span><span class="p">,])</span>  <span class="c1"># TRUE!</span>
+</code></pre></div>
+<p>Now the <code>data.frame</code> acts in the same way that <code>numbers.df</code> did. This is the easiest
+and most straightforward solution, however, it does come at the cost of losing factor
+functionality (e.g. <code>tapply()</code>) on the data frame.</p>
 
         </div>
       </div>
@@ -281,22 +232,22 @@ website will not change if the <code>gh-pages</code> branch is not updated.</p>
       
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
       
       
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
 
     
@@ -304,7 +255,7 @@ website will not change if the <code>gh-pages</code> branch is not updated.</p>
 <div class="unit one-fifth hide-on-mobiles">
     <aside>
     <hr class='doc-bar'> </hr>
-    Also in <i>FGE</i>:<br>
+    Also in <i>Problems and solutions</i>:<br>
     <ul>
       
         
@@ -315,15 +266,8 @@ website will not change if the <code>gh-pages</code> branch is not updated.</p>
       
         
         
-          <li><a href="http://bes-qsig.github.io/fge/docs/contributing_online/">Contributing online</a></li>
-        
       
         
-        
-      
-        
-        
-          <li><a href="http://bes-qsig.github.io/fge/docs/developing_this_website/">Developing this website</a></li>
         
       
         
@@ -346,7 +290,17 @@ website will not change if the <code>gh-pages</code> branch is not updated.</p>
       
         
         
-          <li><a href="http://bes-qsig.github.io/fge/docs/how_to_contribute/">How to contribute</a></li>
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
         
       
         
@@ -360,19 +314,10 @@ website will not change if the <code>gh-pages</code> branch is not updated.</p>
       
         
         
-          <li><a href="http://bes-qsig.github.io/fge/docs/introduction_to_markdown/">Introduction to Markdown</a></li>
-        
       
         
         
-      
-        
-        
-      
-        
-        
-      
-        
+          <li><a href="http://bes-qsig.github.io/fge/docs/problems_and_solutions_r/">Problems and Solutions in R</a></li>
         
       
         

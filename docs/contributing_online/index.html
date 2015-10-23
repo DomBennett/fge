@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FGE &middot; Developing this website</title>
+  <title>FGE &middot; Contributing online</title>
   <meta name="description" content="Crowd-sourced notes on all things<br>computational and quantitative in ecological research">
   <link rel="stylesheet" href="/fge/css/main.css">
-  <link rel="canonical" href="http://bes-qsig.github.io/fge/docs/developing_this_website/">
+  <link rel="canonical" href="http://bes-qsig.github.io/fge/docs/contributing_online/">
   <link rel="alternate" type="application/rss+xml" title="Field Guides for Ecologists" href="http://bes-qsig.github.io/fge/feed.xml" />
   <link rel="icon" type="image/x-icon" href="/fge/favicon.ico">
   <script type="text/javascript" src="/fge/js/jquery-2.1.0.min.js"></script>
@@ -55,7 +55,7 @@
         <div class='site-title'>
             
   <h1>
-    Developing this website
+    Contributing online
   </h1>
 
 
@@ -145,135 +145,91 @@
 
       <div class="unit four-fifths">
         <div class="edit-message">
-            <a href="https://github.com/BES-QSIG/docs/blob/master/developing_this_website.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
+            <a href="https://github.com/BES-QSIG/docs/blob/master/contributing_online.md"><i class="fa fa-pencil"></i> &nbsp;Improve page</a>
         </div>
         <div class="doc-content">
-          <p>Here I will describe how to download, set-up and develop the FGE website.</p>
+          <h1 id="online-editing">Online editing</h1>
 
-<h2 id="website-dependencies">Website dependencies</h2>
-
-<ul>
-<li>Mac, Linux or other Unix operating system</li>
-<li><a href="https://www.python.org/">Python</a></li>
-<li><a href="http://jekyllrb.com/">Jekyll</a></li>
-<li><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a></li>
-</ul>
-
-<h2 id="website-repositories">Website repositories</h2>
-
-<p>The website is held online across two different Git repositories and three
-branches. These are:</p>
+<p>GitHub is an online database of git repositories. These can be thought of as
+folders where every file or folder contains a history of every change ever made
+to it. The walkthrough below will describe how you can make changes to the BES-QSIG
+docs repository. It covers three GitHub concepts:</p>
 
 <ul>
-<li><a href="https://github.com/BES-QSIG/fge">fge, master branch</a>(<code>fge-master</code>)</li>
-<li><a href="https://github.com/BES-QSIG/fge/tree/gh-pages">fge, gh-pages branch</a>(<code>fge-gh-pages</code>)</li>
-<li><a href="https://github.com/BES-QSIG/docs">docs, master branch</a>(<code>docs</code>)</li>
+<li>Forking</li>
+<li>Editing online with GitHub</li>
+<li>Pull requests</li>
 </ul>
 
-<h2 id="directory-structure">Directory structure</h2>
+<h2 id="forking">Forking</h2>
 
-<p>Each of the three different branches need to be downloaded and placed in the
-specific directory structure as below, where the <code>fge/</code> directory
-represents the <code>fge-master</code> branch, and <code>_docs_repo/</code> and <code>_site/</code> are
-ignored directories within <code>fge/</code> representing the <code>docs</code> and
-<code>fge-gh-pages</code> branches respectively.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">-fge/
-    -_docs_repo@BES-QSIG/docs.git
-      [.md files of guides]
-    -_site@BES-QSIG/fge/tree/gh-pages
-      [hostable website]
-    -_layouts/
-      [page layouts]
-    -_sass/
-      [css scripts]
-    -_includes/
-      [head etc.]
-    -css/
-      [css script]
-    -fonts/
-      [fonts]
-    -guides/
-      [index of guides]
-    -js/
-      [javascript files]
-    -img/
-      [cover.jpg etc.]
-    -README.md
-      [GitHub README]
-    -feed.xml
-      [RSS feed]
-    -index.html
-      [home page]
-    -.gitignore
-      [git ignore]
-    -_config.yml
-      [Jekyll config file]
-    -favicon.ico
-      [BES symbol]
-</code></pre></div>
-<h2 id="setting-up-the-files-and-folders">Setting up the files and folders</h2>
+<p>To prevent spamming, the master copy of the docs repository is protected from
+anyone making changes to it. In order for you to make changes or add new files
+it must first be copied to your own GitHub account, this is called forking in
+GitHub terminology.</p>
 
-<p>To set up the above directory structure, follow these commands.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Download a copy of test-cge master branch</span>
-git clone https://github.com/BES-QSIG/fge.git
-<span class="c"># Move into downloaded folder</span>
-<span class="nb">cd </span>fge
-<span class="c"># Download copy of gh-pages branch, place in folder called _site/</span>
-git clone https://github.com/BES-QSIG/fge.git -b gh-pages _site
-<span class="c"># Download copy of docs repo, place in folder called _docs_repo/</span>
-git clone https://github.com/BES-QSIG/docs.git _docs_repo/
-</code></pre></div>
-<h2 id="using-jekyll,-build.py-and-git-to-update-the-website">Using Jekyll, build.py and Git to update the website</h2>
+<p>To make a copy go to the docs repository url (<a href="https://github.com/BES-QSIG/docs">https://github.com/BES-QSIG/docs</a>)
+and click fork.</p>
 
-<p>Once downloaded, make your changes within <code>docs/</code> to add or change any of the
-tutorials or within <code>fge/</code> to edit the look of the website. You can then
-upload these changes for each of the three branches.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Ensure you&#39;re in fge/</span>
-<span class="nb">pwd</span>
-<span class="c"># Parse tutorials for hosting on site with build (creates _docs/)</span>
-python build.py
-<span class="c"># Build website</span>
-jekyll build
-<span class="c"># Test website locally</span>
-jekyll serve
-<span class="c"># Navigate your browser to http://127.0.0.1:4000/fge/ to see local version</span>
-<span class="c"># Once happy, update each of the three Git repos</span>
-git status  <span class="c"># check branch and folder</span>
-git add <span class="o">[</span>FILENAME<span class="o">]</span>
-git commit <span class="o">[</span>FILENAME<span class="o">]</span> -m <span class="o">[</span>MESSAGE<span class="o">]</span>
-<span class="c"># And push the changes</span>
-git push
-</code></pre></div>
-<p>There are two steps to building the hostable website in <code>_site/</code>. <code>build.py</code>
-is a custom python script updates guides&#39; front-matter using the git repo to
-get authors and last date since update. It places updated docs in <code>_docs/</code>
-which is what Jekyll looks for when building the wesbite. <code>jekyll build</code> then
-constructs the hostable website from the layout information, css objects etc.</p>
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/fork-button.png" alt="fork-button" title="The fork button"></p>
 
-<p>It is useful to double check the look and functionality of the website
-with <code>jekyll serve</code> before pushing to GitHub.</p>
+<p>You will now find a copy of the repository in your own GitHub account (Profile --&gt; Repositories).</p>
 
-<p>For the <code>gh-pages</code> branch, version control is not important so you can add and
-commit all files and force a push to GitHub.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git status  <span class="c"># make sure this is the gh-pages branch</span>
-git add .  <span class="c"># add all files</span>
-git commit -a -m <span class="o">[</span>MESSAGE<span class="o">]</span>  <span class="c"># commit all changes</span>
-git -f push  <span class="c"># force a push, ignore any conflicts</span>
-</code></pre></div>
-<blockquote>
-<p>PLEASE DO NOT DO THIS FOR THE MASTER BRANCHES. For the <code>fge</code> master branch
-and <code>docs</code> repo it&#39;s important that all changes are version controlled so that
-we can revert to old versions if anything goes wrong. Make sure you add and
-commit any new files and commit any changes to original files with commit
-messages. It is especially important you do not use the <code>-f</code> flag when pushing
-to GitHub, as you may overwrite someone else&#39;s work.</p>
-</blockquote>
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/forked-repo.png" alt="forked-repository" title="A forked repository"></p>
 
-<p>Note, the website is built in the <code>_site/</code> directory and GitHub uses this
-directory as the <code>gh-pages</code> branch to construct the website. Therefore, the
-website will not change if the <code>gh-pages</code> branch is not updated.</p>
+<p>This is your copy and you can make any changes you want.</p>
 
-<!-- References -->
+<h2 id="making-changes">Making changes</h2>
+
+<p>Selecting one of the documents (e.g. how to contribute) you can make changes to a file directly using GitHub&#39;s edit button.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/edit-button.png" alt="edit-button" title="The edit button"></p>
+
+<p>This will open a text editor where you can modify the Markdown script. In this example I have added a new title and some text.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/editing.png" alt="editing" title="Editing"></p>
+
+<p>We can preview how the Markdown script will be parsed by clicking the preview changes. Handily, GitHub has highlighted where the additions have occurred with green lines.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/previewing-changes.png" alt="previewing-changes" title="Previewing changes"></p>
+
+<p>GitHub requires any changes made to a file to be &#39;committed&#39;. This will update the file with the change you have made and it will record the file&#39;s state before the change. All commits made must have a message describing the changes. In this example, our message is &#39;added new title&#39; and the additional information is &#39;I&#39;ve added a new title and new text.&#39; We will commit these changes directly to our copy of the docs repo (termed here as the &#39;master branch&#39;). (Selecting &#39;Create a new branch for this commit and start a pull request&#39; would skip the pull request section below.)</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/commit.png" alt="commit" title="Committing the change"></p>
+
+<h2 id="adding-new-files">Adding new files</h2>
+
+<p>To create a new file (text based files only) click the + symbol.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/adding-files.png" alt="adding-files" title="Add file"></p>
+
+<p>This will take you to a new editing screen where you write your markdown and preview as before.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/creating-files.png" alt="creating-files" title="Creating file"></p>
+
+<p>Please make sure you use the .md file extension and include front matter as described above.</p>
+
+<h2 id="creating-a-pull-request">Creating a pull request</h2>
+
+<p>Navigating to the main page of your copy of the docs repository will show how many commits ahead your copy of the repository (called a branch) is compared to the original.
+In this example, it is 1 commit ahead of the BES-QSIG:master. You can have as many commits as you wish, including changes and new files.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/pull-request-1.png" alt="pull-request-1" title="Pull request 1"></p>
+
+<p>Clicking on compare will show us how our branch and the BES-QSIG:master branch differ. Additions are marked in green and deletions are marked in red. In this example, the two branches can be readily merged allowing us to perform a &#39;pull request&#39;.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/pull-request-2.png" alt="pull-request-2" title="Pull request 2"></p>
+
+<p>A &#39;pull request&#39; is used to merge two branches, &quot;please could you pull my branch into your branch&quot;. If we click on &#39;pull request&#39; GitHub will invite us to describe the changes we have made by showing us a similar screen to what we see when we make commits. In this case it is just one commit, but it could be many.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/create-pull-request.png" alt="create-pull-request" title="Opening a pull request"></p>
+
+<p>Clicking &#39;create pull request&#39; will inform the maintainers of
+the docs repository that someone wishes to make a change. This is done by creating a page where maintainers can view your changes and discuss them with you.</p>
+
+<p><img src="https://raw.githubusercontent.com/BES-QSIG/docs/master/img/opened-pull-request.png" alt="opened-pull-request" title="An open pull request"></p>
+
+<p>If the maintainer is happy with the changes in your branch, they will merge your branch and the original and your changes will be incorporated into the FGE website within a few days.</p>
 
         </div>
       </div>
