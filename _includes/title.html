@@ -19,12 +19,12 @@
   </h1>
 {% endif %}
 {% if page.layout == "doc" %}
-  <b>Author(s)</b>: {{ page.authors | join: ', ' }}<br>
-  <b>Status</b>: {{ page.status | capitalize }}<br>
-  <b>Last edit</b>: {{ page.lastchange }}
+  {{ page.authors | join: ', ' }}<br>
+  {{ page.status | capitalize }}<br>
+  {{ page.lastchange }}
   {% if page.source %}
     <br><p style="font-size:small">
-      Original content by:<br>
+      Originally by:<br>
       <a href="{{ page.source }}">{{ page.source_author }}</a>
     <br><b></b>
   {% endif %}
