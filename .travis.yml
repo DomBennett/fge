@@ -1,8 +1,3 @@
-# TODO:
-# create a new folder called scripts
-# move build.py to new script
-# create a new cbuild script for testing the pipeline
-
 language: ruby
 rvm:
 - 2.1
