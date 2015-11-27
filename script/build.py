@@ -19,6 +19,7 @@ import subprocess
 import operator
 from github import Github
 from shutil import copyfile
+from cgi import escape
 
 
 # GLOBALS
@@ -42,6 +43,11 @@ part_github_yml = """- name: {0}
 
 
 # FUNCTIONS
+def htmlFriendly(text):
+    """Return HTML friendly text"""
+    return escape(unicode(text)).encode('ascii', 'xmlcharrefreplace')
+
+
 def gen_github_yaml():
     """Use GitHub API to generate _data/github.yml"""
     # get GitHub info
@@ -60,9 +66,10 @@ def gen_github_yaml():
     github_yml = ''
     for name in sorted(contributors.keys()):
         ctb = contributors[name]
-        github_yml += part_github_yml.format(name, ctb['email'],
-                                             ctb['affiliation'], ctb['image'],
-                                             ctb['github_username'])
+        github_yml += part_github_yml.format(name, htmlFriendly(ctb['email']),
+                                             htmlFriendly(ctb['affiliation']),
+                                             htmlFriendly(ctb['image']),
+                                             htmlFriendly(ctb['github_username']))
     return github_yml
 
 
