@@ -10,7 +10,7 @@ title: Index
     {% for doc in site.docs %}
       {% assign doc_id = doc.url | split: '/' | last %}
         {% if theme.docs contains doc_id %}
-          <li><a href="{{ doc.url | prepend: site.baseurl }}"
+          <li><a href="{{ base }}{{ doc.url }}"
                  title="Status: {{ doc.status | capitalize }}
 Last change: {{ doc.lastchange }}
 Authors: {{ doc.authors }}">
