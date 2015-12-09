@@ -13,7 +13,10 @@
       {% for doc in site.docs %}
         {% assign doc_id = doc.url | split: '/' | last %}
         {% if theme_docs contains doc_id %}
-          <li><a href="{{ base }}{{ doc.permalink }}">{{ doc.title }}</a></li>
+          {% comment %}
+            From any given doc page, home is two levels up
+          {% endcomment %}
+          <li><a href="../..{{ doc.permalink }}">{{ doc.title }}</a></li>
         {% endif %}
       {% endfor %}
     </ul>

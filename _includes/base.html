@@ -1,6 +1,18 @@
 <!-- _includes/base.html -->
+{% comment %}
+  The base is used to find the relative path back to home. It does not seem to
+  be accessible within page content. It counts the number of / in a link.
+  This is done by ensuring each / is followed by a whitespace to ensure the
+  split string has the same number of /. It does not count the number in the
+  html before fge or _site. This means it can be run locally and on github
+  and the links will still be relative.
+{% endcomment %}
 {% assign base = '' %}
-{% assign depth = page.url | split: '/' | size %}
+{% assign spliturl = page.url | split: 'fge' | last %}
+{% assign spliturl = page.url | split: '_site' | last %}
+{% assign spliturl = spliturl | replace: '/', '/ ' %}
+{% assign spliturl = spliturl | split: '/' %}
+{% assign depth = spliturl | size | minus: 1 %}
 {% if    depth == 1 %}{% assign base = '.' %}
 {% elsif depth == 2 %}{% assign base = '..' %}
 {% elsif depth == 3 %}{% assign base = '../..' %}

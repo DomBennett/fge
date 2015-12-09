@@ -10,7 +10,10 @@ title: Index
     {% for doc in site.docs %}
       {% assign doc_id = doc.url | split: '/' | last %}
         {% if theme.docs contains doc_id %}
-          <li><a href="{{ base }}{{ doc.url }}"
+          {% comment %}
+            From the guides index, home is one level up
+          {% endcomment %}
+          <li><a href="..{{ doc.url }}"
                  title="Status: {{ doc.status | capitalize }}
 Last change: {{ doc.lastchange }}
 Authors: {{ doc.authors }}">
