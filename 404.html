@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
 
+<!-- _includes/base.html -->
+
+
+
+
+
+
+
+
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FGE &middot; 404</title>
   <meta name="description" content="Crowd-sourced notes on all things<br>computational and quantitative in ecological research">
-  <link rel="stylesheet" href="/fge/css/main.css">
+  <link rel="stylesheet" href="./css/main.css">
   <link rel="canonical" href="http://bes-qsig.github.io/fge/404.html">
   <link rel="alternate" type="application/rss+xml" title="Field Guides for Ecologists" href="http://bes-qsig.github.io/fge/feed.xml" />
-  <link rel="icon" type="image/x-icon" href="/fge/favicon.ico">
-  <script type="text/javascript" src="/fge/js/jquery-2.1.0.min.js"></script>
-  <script type="text/javascript" src="/fge/js/jquery.stellar.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <script type="text/javascript" src="./js/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.stellar.min.js"></script>
   <script>
     $(document).on('ready', function(){
       // dynamically choose background image
@@ -27,7 +37,7 @@
       var authors = ["Ed Schipul", "Ernst Vikne", "Randi Hausken", "Peter Southwood", "U.S. Fish and Wildlife Service", "Wing-Chi Poon and Kjetil r", "katsrcool", "j-b.d", "ProjectManhattan", "Nasser Akabab", "John Haslam", "Mihir.rao94", "Gabriel Barathieu", "Mike Baird", "Paul Asman and Jill Lenoble", "Mike Baird", "(WT-shared) Jpatokal", "KirinX", "Lamiot", "Joe King", "Darklich14", "Brocken Inaglory", "Toby Hudson"];
       var rand = Math.floor(Math.random()*imgurls.length);
       $(".site-header").css({'background-image': 'url(' + imgurls[rand] + ')'});
-      $('#pphotocredit').html("<i>Cover photo credit</i>:<br> <a href=" + crediturls[rand] + ">" + titles[rand] + " (by " + authors[rand] + ")</a>");
+      $('#pphotocredit').html("<i>Cover photo credit<\/i>:<br> <a href=" + crediturls[rand] + ">" + titles[rand] + " (by " + authors[rand] + ")<\/a>");
     })
   </script>
   <script>
@@ -54,33 +64,33 @@
 
   <div id='site-nav-unit' class="unit two-thirds align-right">
     <nav class="site-nav">
-        <a href="#" class="menu-icon">
+        <div class="menu-icon">
             <svg viewBox="0 0 18 15">
                 <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
                 <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
                 <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
             </svg>
-        </a>
+        </div>
 
       <div class="trigger">
           
-              <a class="page-link"
-                 href="/fge/">
+              <a class="page-link" type="alternate"
+                 href="./">
                   Home
               </a>
           
-              <a class="page-link"
-                 href="/fge/guides">
+              <a class="page-link" type="alternate"
+                 href="./guides/">
                   Index
               </a>
           
-              <a class="page-link"
-                 href="/fge/news">
+              <a class="page-link" type="alternate"
+                 href="./news/">
                   News
               </a>
           
-              <a class="page-link"
-                 href="/fge/contributors">
+              <a class="page-link" type="alternate"
+                 href="./contributors/">
                   Contributors
               </a>
           
@@ -105,7 +115,7 @@
         s.parentNode.insertBefore(gcse, s);
       })();
     </script>
-    <gcse:search></gcse:search>
+    <div class="gcse-search"></div>  <!-- https://productforums.google.com/forum/#!topic/customsearch/XE-cs3_oVuY -->
   </div>
 </div>
 
@@ -120,14 +130,15 @@
     <h3>
       Whoops! Sorry this page seems to be a bit lost ...
     </h3>
-    <img src="/fge/img/lost_sheep.jpg" alt="Lost sheep">
+    <img src="../img/lost_sheep.jpg" alt="Lost sheep">
   </div>
 </div>
 
     </div>
   </div>
 
-  <div class="wrapper">
+  <footer>
+<div class="wrapper">
    <div class="footer-col-wrapper">
 
      <div class="footer-col  footer-col-1">
@@ -135,7 +146,7 @@
          <li>
            <a href="mailto:quantitative@britishecologicalsociety.org" style="margin-right:10px">
                <span class='icon icon--email'>
-                   &#9993
+                   &#9993;
                    <span class="username">E-mail</span>
                </span>
            </a>
@@ -181,13 +192,13 @@
        GitHub - 800 × 209
        -->
        <a href="https://besquantitativeecology.wordpress.com">
-         <img src='/fge/img/besqsig_logo.png' width="110" height="110" alt="BES-QSIG" style='margin-right:10px'>
+         <img src='./img/besqsig_logo.png' width="110" height="110" alt="BES-QSIG" style='margin-right:10px'>
        </a>
        <a href="http://jekyllrb.com/">
-         <img src='/fge/img/jekyll_logo.png' width="143" height="64" alt="Jekyll" style="margin-right:10px">
+         <img src='./img/jekyll_logo.png' width="143" height="64" alt="Jekyll" style="margin-right:10px">
        </a>
        <a href="https://github.com">
-         <img src='/fge/img/github_logo.png' width="100" height="26" alt="GitHub" style="margin-right:10px">
+         <img src='./img/github_logo.png' width="100" height="26" alt="GitHub" style="margin-right:10px">
        </a>
      </div>
 
@@ -199,7 +210,7 @@
            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
              Creative Commons Attribution 4.0 International License
            </a>.
-         </a><br>
+         <br>
          <p>
            The FGE website is licensed under an
            <a rel="license" href="https://github.com/BES-QSIG/fge/blob/master/LICENSE">

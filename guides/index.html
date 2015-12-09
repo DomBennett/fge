@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
 
+<!-- _includes/base.html -->
+
+
+
+
+
+
+
+
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FGE &middot; Index</title>
   <meta name="description" content="Crowd-sourced notes on all things<br>computational and quantitative in ecological research">
-  <link rel="stylesheet" href="/fge/css/main.css">
+  <link rel="stylesheet" href="../css/main.css">
   <link rel="canonical" href="http://bes-qsig.github.io/fge/guides/">
   <link rel="alternate" type="application/rss+xml" title="Field Guides for Ecologists" href="http://bes-qsig.github.io/fge/feed.xml" />
-  <link rel="icon" type="image/x-icon" href="/fge/favicon.ico">
-  <script type="text/javascript" src="/fge/js/jquery-2.1.0.min.js"></script>
-  <script type="text/javascript" src="/fge/js/jquery.stellar.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.stellar.min.js"></script>
   <script>
     $(document).on('ready', function(){
       // dynamically choose background image
@@ -27,7 +37,7 @@
       var authors = ["Ed Schipul", "Ernst Vikne", "Randi Hausken", "Peter Southwood", "U.S. Fish and Wildlife Service", "Wing-Chi Poon and Kjetil r", "katsrcool", "j-b.d", "ProjectManhattan", "Nasser Akabab", "John Haslam", "Mihir.rao94", "Gabriel Barathieu", "Mike Baird", "Paul Asman and Jill Lenoble", "Mike Baird", "(WT-shared) Jpatokal", "KirinX", "Lamiot", "Joe King", "Darklich14", "Brocken Inaglory", "Toby Hudson"];
       var rand = Math.floor(Math.random()*imgurls.length);
       $(".site-header").css({'background-image': 'url(' + imgurls[rand] + ')'});
-      $('#pphotocredit').html("<i>Cover photo credit</i>:<br> <a href=" + crediturls[rand] + ">" + titles[rand] + " (by " + authors[rand] + ")</a>");
+      $('#pphotocredit').html("<i>Cover photo credit<\/i>:<br> <a href=" + crediturls[rand] + ">" + titles[rand] + " (by " + authors[rand] + ")<\/a>");
     })
   </script>
   <script>
@@ -54,33 +64,33 @@
 
   <div id='site-nav-unit' class="unit two-thirds align-right">
     <nav class="site-nav">
-        <a href="#" class="menu-icon">
+        <div class="menu-icon">
             <svg viewBox="0 0 18 15">
                 <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
                 <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
                 <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
             </svg>
-        </a>
+        </div>
 
       <div class="trigger">
           
-              <a class="page-link"
-                 href="/fge/">
+              <a class="page-link" type="alternate"
+                 href="../">
                   Home
               </a>
           
-              <a class="page-link"
-                 href="/fge/guides">
+              <a class="page-link" type="alternate"
+                 href="../guides/">
                   Index
               </a>
           
-              <a class="page-link"
-                 href="/fge/news">
+              <a class="page-link" type="alternate"
+                 href="../news/">
                   News
               </a>
           
-              <a class="page-link"
-                 href="/fge/contributors">
+              <a class="page-link" type="alternate"
+                 href="../contributors/">
                   Contributors
               </a>
           
@@ -105,7 +115,7 @@
         s.parentNode.insertBefore(gcse, s);
       })();
     </script>
-    <gcse:search></gcse:search>
+    <div class="gcse-search"></div>  <!-- https://productforums.google.com/forum/#!topic/customsearch/XE-cs3_oVuY -->
   </div>
 </div>
 
@@ -125,7 +135,8 @@
     
       
         
-          <li><a href="/fge/docs/contributing_online/"
+          
+          <li><a href="../docs/contributing_online/"
                  title="Status: Complete
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -138,7 +149,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/developing_this_website/"
+          
+          <li><a href="../docs/developing_this_website/"
                  title="Status: Complete
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -166,7 +178,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/how_to_contribute/"
+          
+          <li><a href="../docs/how_to_contribute/"
                  title="Status: Complete
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -185,15 +198,13 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/introduction_to_markdown/"
+          
+          <li><a href="../docs/introduction_to_markdown/"
                  title="Status: Complete
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
                  Introduction to Markdown
                </a> <small><sup><font color="grey">(complete)</font></sup></small>
-        
-    
-      
         
     
       
@@ -263,7 +274,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/introduction_c/"
+          
+          <li><a href="../docs/introduction_c/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -273,7 +285,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/introduction_julia/"
+          
+          <li><a href="../docs/introduction_julia/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -283,15 +296,13 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/introduction_python/"
+          
+          <li><a href="../docs/introduction_python/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
                  Introduction to Python
                </a> <small><sup><font color="grey">(Not started)</font></sup></small>
-        
-    
-      
         
     
       
@@ -343,7 +354,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/git_advanced/"
+          
+          <li><a href="../docs/git_advanced/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -353,7 +365,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/git_basics/"
+          
+          <li><a href="../docs/git_basics/"
                  title="Status: Complete
 Last change: Fri-Oct-23-2015
 Authors: Florian Schneider (91.8%), Dominic Bennett (8.2%)">
@@ -363,7 +376,8 @@ Authors: Florian Schneider (91.8%), Dominic Bennett (8.2%)">
     
       
         
-          <li><a href="/fge/docs/github_basics/"
+          
+          <li><a href="../docs/github_basics/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -400,15 +414,13 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/introduction_to_versioncontrol/"
+          
+          <li><a href="../docs/introduction_to_versioncontrol/"
                  title="Status: Complete
 Last change: Fri-Oct-23-2015
 Authors: Florian Schneider (96.6%), Dominic Bennett (3.4%)">
                  Introduction to Version Control
                </a> <small><sup><font color="grey">(complete)</font></sup></small>
-        
-    
-      
         
     
       
@@ -484,7 +496,8 @@ Authors: Florian Schneider (96.6%), Dominic Bennett (3.4%)">
     
       
         
-          <li><a href="/fge/docs/introduction_to_using_the_hpc/"
+          
+          <li><a href="../docs/introduction_to_using_the_hpc/"
                  title="Status: Complete
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -512,10 +525,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-    
-      
-        
-          <li><a href="/fge/docs/unix_ssh_introduction/"
+          
+          <li><a href="../docs/unix_ssh_introduction/"
                  title="Status: Complete
 Last change: Sun-Sep-6-2015
 Authors: Will Pearse (95.9%), Dominic Bennett (4.1%)">
@@ -587,10 +598,8 @@ Authors: Will Pearse (95.9%), Dominic Bennett (4.1%)">
     
       
         
-    
-      
-        
-          <li><a href="/fge/docs/reproducible_pipelines_in_python/"
+          
+          <li><a href="../docs/reproducible_pipelines_in_python/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -600,7 +609,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/reproducible_pipelines_in_r/"
+          
+          <li><a href="../docs/reproducible_pipelines_in_r/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -633,7 +643,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/creating_an_r_package_in_rstudio/"
+          
+          <li><a href="../docs/creating_an_r_package_in_rstudio/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -658,7 +669,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/how_to_build_a_python_package/"
+          
+          <li><a href="../docs/how_to_build_a_python_package/"
                  title="Status: Started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -668,15 +680,13 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/how_to_build_an_r_package/"
+          
+          <li><a href="../docs/how_to_build_an_r_package/"
                  title="Status: First version
 Last change: Sun-Sep-6-2015
 Authors: Simon Dellicour (82.6%), Dominic Bennett (17.4%)">
                  How to build an R package
                </a> <small><sup><font color="grey">(first version)</font></sup></small>
-        
-    
-      
         
     
       
@@ -725,15 +735,13 @@ Authors: Simon Dellicour (82.6%), Dominic Bennett (17.4%)">
     
       
         
-          <li><a href="/fge/docs/IntroWinBUGSwithR/"
+          
+          <li><a href="../docs/IntroWinBUGSwithR/"
                  title="Status: Complete
 Last change: Fri-Oct-2-2015
 Authors: susanjarvis501 (100.0%)">
                  Introduction to WinBUGs with R
                </a> <small><sup><font color="grey">(complete)</font></sup></small>
-        
-    
-      
         
     
       
@@ -866,10 +874,8 @@ Authors: susanjarvis501 (100.0%)">
     
       
         
-    
-      
-        
-          <li><a href="/fge/docs/problems_and_solutions_r/"
+          
+          <li><a href="../docs/problems_and_solutions_r/"
                  title="Status: Contributions wanted
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -902,7 +908,8 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/coding_philosophy/"
+          
+          <li><a href="../docs/coding_philosophy/"
                  title="Status: Not started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
@@ -930,15 +937,13 @@ Authors: Dominic Bennett (100.0%)">
     
       
         
-          <li><a href="/fge/docs/google_search_tricks/"
+          
+          <li><a href="../docs/google_search_tricks/"
                  title="Status: Started
 Last change: Fri-Oct-23-2015
 Authors: Dominic Bennett (100.0%)">
                  Google search tricks
                </a> <small><sup><font color="grey">(Started)</font></sup></small>
-        
-    
-      
         
     
       
@@ -1099,9 +1104,6 @@ Authors: Dominic Bennett (100.0%)">
       
       
     
-      
-      
-    
   
     
       
@@ -1171,9 +1173,6 @@ Authors: Dominic Bennett (100.0%)">
          <td>Dominic Bennett (100.0%)</td>
          <td>Fri-Oct-23-2015</td>
        </tr>
-      
-    
-      
       
     
       
@@ -1309,9 +1308,6 @@ Authors: Dominic Bennett (100.0%)">
       
       
     
-      
-      
-    
   
     
       
@@ -1393,9 +1389,6 @@ Authors: Dominic Bennett (100.0%)">
     
       
       
-    
-      
-      
        <tr>
          <td>UNIX</td>
          <td><a href="/fge/docs/unix_ssh_introduction/">UNIX (and SSH) introduction</a></td>
@@ -1406,9 +1399,6 @@ Authors: Dominic Bennett (100.0%)">
       
     
   
-    
-      
-      
     
       
       
@@ -1596,9 +1586,6 @@ Authors: Dominic Bennett (100.0%)">
       
       
     
-      
-      
-    
   
     
       
@@ -1681,13 +1668,7 @@ Authors: Dominic Bennett (100.0%)">
       
       
     
-      
-      
-    
   
-    
-      
-      
     
       
       
@@ -1859,9 +1840,6 @@ Authors: Dominic Bennett (100.0%)">
       
       
     
-      
-      
-    
   
   </table>
 -->
@@ -1869,7 +1847,8 @@ Authors: Dominic Bennett (100.0%)">
     </div>
   </div>
 
-  <div class="wrapper">
+  <footer>
+<div class="wrapper">
    <div class="footer-col-wrapper">
 
      <div class="footer-col  footer-col-1">
@@ -1877,7 +1856,7 @@ Authors: Dominic Bennett (100.0%)">
          <li>
            <a href="mailto:quantitative@britishecologicalsociety.org" style="margin-right:10px">
                <span class='icon icon--email'>
-                   &#9993
+                   &#9993;
                    <span class="username">E-mail</span>
                </span>
            </a>
@@ -1916,13 +1895,13 @@ Authors: Dominic Bennett (100.0%)">
        GitHub - 800 × 209
        -->
        <a href="https://besquantitativeecology.wordpress.com">
-         <img src='/fge/img/besqsig_logo.png' width="110" height="110" alt="BES-QSIG" style='margin-right:10px'>
+         <img src='../img/besqsig_logo.png' width="110" height="110" alt="BES-QSIG" style='margin-right:10px'>
        </a>
        <a href="http://jekyllrb.com/">
-         <img src='/fge/img/jekyll_logo.png' width="143" height="64" alt="Jekyll" style="margin-right:10px">
+         <img src='../img/jekyll_logo.png' width="143" height="64" alt="Jekyll" style="margin-right:10px">
        </a>
        <a href="https://github.com">
-         <img src='/fge/img/github_logo.png' width="100" height="26" alt="GitHub" style="margin-right:10px">
+         <img src='../img/github_logo.png' width="100" height="26" alt="GitHub" style="margin-right:10px">
        </a>
      </div>
 
@@ -1934,7 +1913,7 @@ Authors: Dominic Bennett (100.0%)">
            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
              Creative Commons Attribution 4.0 International License
            </a>.
-         </a><br>
+         <br>
          <p>
            The FGE website is licensed under an
            <a rel="license" href="https://github.com/BES-QSIG/fge/blob/master/LICENSE">
