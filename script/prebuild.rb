@@ -5,7 +5,7 @@
 # Then, upload _site/ to gh-pages branch.
 
 # LIBS
-require 'FileUtils'
+require 'fileutils'
 require 'open-uri'
 require 'json'
 require 'pp'
