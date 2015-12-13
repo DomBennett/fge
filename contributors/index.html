@@ -14,10 +14,13 @@ permalink: /contributors/
       <img src="{{ contributor.image }}" width="125" height="125" alt="{{ contributor.name }}">
       </div>
       <div class="unit two-thirds">
+      {% if contributor.name != 'None' %}
+        <b>{{ contributor.name }}</b>
+      {% endif %}
       {% if contributor.affiliation != 'None' %}
-        <b>{{ contributor.name }}</b> ({{ contributor.affiliation }})<br>
+        ({{ contributor.affiliation }})<br>
       {% else %}
-        <b>{{ contributor.name }}</b><br>
+        <br>
       {% endif %}
       {% if contributor.email != 'None' %}
       <a href="mailto:{{ contributor.email }}" style="margin-right:10px">
