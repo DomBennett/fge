@@ -1,4 +1,4 @@
-# Build docs for the FGE website from the /BES-QSIG/docs repository.
+# Convert docs for the FGE website from the /BES-QSIG/docs repository.
 # Usage:
 #  ruby build.rb
 #  jekyll build
@@ -6,6 +6,9 @@
 
 # LIBS
 require "FileUtils"
+require 'open-uri'
+require 'json'
+require 'pp'
 
 # FUNCTIONS
 def mkfm(fm)
@@ -20,18 +23,46 @@ permalink: #{fm["permalink"]}
 source: #{fm["source"]}
 source_author: #{fm["source_author"]}
 ---"
-  return res
+  res
 end
 
-def mkgithubyml(gh)
-  # return github user yaml info
-  yml = "- name: #{gh["name"]}
-  email: #{gh["email"]}
-  affiliation: #{gh["affiliation"]}
-  image: #{gh["image"]}
-  github_username: #{gh["github_username"]}
-  "
-  return yml
+def getYmlString(h, k)
+  # Return HTML-safe hash string else "None"
+  if h[k]
+    res = h[k]
+  else
+    res = "None"
+  end
+  res
+end
+
+def mkgithubyml(udata)
+  # Return github user yaml info
+  yml = "- name: #{getYmlString(udata, "name")}
+  email: #{getYmlString(udata, "email")}
+  affiliation: #{getYmlString(udata, "company")}
+  image: #{getYmlString(udata, "avatar_url")}
+  github_username: #{getYmlString(udata, "login")}
+"
+  yml
+end
+
+def gen_github_yaml()
+  # Return github_yml
+  # Read contributors using GitHub API
+  # https://gist.github.com/kyletcarlson/7911188
+  url = "https://api.github.com/repos/BES-QSIG/docs/contributors"
+  buffer = open(url).read
+  results = JSON.parse(buffer)
+  yml = ""
+  puts "Working on ....\n"
+  for r in results
+    puts ".... [" + r['login'] + "]\n"
+    buffer = open(r['url']).read
+    udata = JSON.parse(buffer)
+    yml += mkgithubyml(udata)
+  end
+  yml
 end
 
 def get_contributions(doc, path)
@@ -63,7 +94,7 @@ def get_contributions(doc, path)
   for editor, changes in sorted.reverse
     author_string += "#{editor} (#{changes}%), "
   end
-  return author_string.sub(/,\s$/, "")
+  author_string.sub(/,\s$/, "")
 end
 
 def get_last_change(doc, path)
@@ -75,7 +106,7 @@ def get_last_change(doc, path)
   last_change = last_change.split(/\s/)
   last_change.delete_at(3)
   last_change.delete_at(4)
-  return last_change.join('-')
+  last_change.join('-')
 end
 
 def read_doc(doc, path)
@@ -90,7 +121,7 @@ def read_doc(doc, path)
       fm[key] = value
     end
   end
-  return fm, text[positions[1]+2..-1]
+  return fm, text[positions[1]+3..-1]
 end
 
 def run(input_dir, output_dir)
@@ -99,8 +130,9 @@ def run(input_dir, output_dir)
   docs = Dir.entries(input_dir)
   docs.delete_if { |e| !e.include?(".md") }
   docs.delete("README.md")
+  puts "Working on ....\n"
   for doc in docs
-    puts doc
+    puts ".... [" + doc + "]\n"
     fm, text = read_doc(doc, input_dir)
     fm["lastchange"] = get_last_change(doc, input_dir)
     fm["authors"] = get_contributions(doc, input_dir)
@@ -116,6 +148,7 @@ def run(input_dir, output_dir)
 end
 
 # SCRIPT
+puts "Converting docs for FGE\n"
 if Dir.pwd[-3..-1] != 'fge'
   puts "Halted: cwd must be fge/"
   exit
@@ -137,3 +170,7 @@ docs_index_src = File.join(input_dir, 'index.yml')
 docs_index_d = File.join(data_dir, 'docs.yml')
 FileUtils.cp(docs_index_src, docs_index_d)
 run(input_dir, output_dir)
+puts "Getting latest data on contributors from GitHub ....\n"
+github_yml = gen_github_yaml()
+File.open(File.join(data_dir, "github.yml"), 'w') { |file| file.write(github_yml) }
+puts "Done\n"
