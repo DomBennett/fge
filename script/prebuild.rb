@@ -5,10 +5,11 @@
 # Then, upload _site/ to gh-pages branch.
 
 # LIBS
-require "FileUtils"
+require 'FileUtils'
 require 'open-uri'
 require 'json'
 require 'pp'
+require 'cgi'
 
 # FUNCTIONS
 def mkfm(fm)
@@ -29,7 +30,10 @@ end
 def getYmlString(h, k)
   # Return HTML-safe hash string else "None"
   if h[k]
-    res = h[k]
+    if !/url/.match(k)
+      res = CGI.escapeHTML(h[k])
+    else
+    end
   else
     res = "None"
   end
